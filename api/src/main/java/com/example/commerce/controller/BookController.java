@@ -19,7 +19,7 @@ public class BookController {
 
     @GetMapping("/book")
     public ResponseEntity<?> findAll(){
-        return new ResponseEntity<>("ok", HttpStatus.OK);
+        return new ResponseEntity<String>("ok", HttpStatus.OK);
     }
 
 
