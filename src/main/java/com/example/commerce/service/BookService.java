@@ -5,16 +5,21 @@ import com.example.commerce.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class BookService {
 
     private final BookRepository bookRepository;
 
-    public Book create(Book book){
+    public Book create(Book book) {
         return bookRepository.save(book);
     }
 
+    public List<Book> findAll() {
+        return bookRepository.findAll();
+    }
 
 
 }
