@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 public class BookController {
@@ -18,16 +20,16 @@ public class BookController {
 
 
     @GetMapping("/book")
-    public ResponseEntity<?> findAll(){
-        return new ResponseEntity<String>("ok", HttpStatus.OK);
+    public List<Book> findAll() {
+        return bookService.findAll();
+//        return new ResponseEntity<String>("ok", HttpStatus.OK);
     }
 
 
     @PostMapping("/book")
     public ResponseEntity<?> save(@RequestBody Book book){
-
         System.out.println("title " + book.getTitle());
-        System.out.println("author " + book.getTitle());
+        System.out.println("author " + book.getAuthor());
         return new ResponseEntity<>(bookService.create(book), HttpStatus.CREATED);
 
     }
