@@ -3,13 +3,10 @@ package com.example.commerce.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -30,11 +27,14 @@ public class Location {
 
     private LocalDateTime close;
 
+    @OneToMany
+    private Set<Service> purpose;
+
     private Boolean mon;
 
     private Boolean tues;
 
-    private Boolean Wed;
+    private Boolean wed;
 
     private Boolean thurs;
 
@@ -43,7 +43,6 @@ public class Location {
     private Boolean sat;
 
     private Boolean sun;
-
     //Embedded , Embeddable
 
 

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -19,19 +20,16 @@ public class Appointment {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "location_id")
     private Location location;
 
-    private String time;
-
-    private Long customer_id;
+    private LocalDateTime time;
 
     private String purpose;
 
 
-
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "customer_id")
     @JsonIgnore
     private Customer customer;
 
