@@ -52,12 +52,12 @@ public class AppointmentService {
         return appointmentRepository.save(appointment);
     }
 
-    public Appointment update(long appId, Appointment appointment) {
+    public Appointment update(Long appId, Appointment appointment) {
         appointment.setId(appId);
         return appointmentRepository.save(appointment);
     }
 
-    public void delete(long appId) {
+    public void delete(Long appId) {
         try {
             appointmentRepository.deleteById(appId);
         } catch (InvalidDataAccessResourceUsageException ex) {
