@@ -1,8 +1,7 @@
 package com.example.commerce.controller;
 
 import com.example.commerce.domain.Appointment;
-import com.example.commerce.domain.AppointmentDTO;
-import com.example.commerce.domain.AppointmentDTO;
+import com.example.commerce.domain.DTO.AppointmentDTO;
 import com.example.commerce.service.AppointmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

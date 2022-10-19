@@ -1,7 +1,7 @@
 package com.example.commerce.controller;
 
 import com.example.commerce.domain.Customer;
-import com.example.commerce.domain.CustomerDTO;
+import com.example.commerce.domain.DTO.CustomerDTO;
 import com.example.commerce.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
