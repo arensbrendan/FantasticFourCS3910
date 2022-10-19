@@ -2,11 +2,13 @@ package com.example.commerce.controller;
 
 import com.example.commerce.domain.Appointment;
 import com.example.commerce.domain.AppointmentDTO;
+import com.example.commerce.domain.AppointmentDTO;
 import com.example.commerce.service.AppointmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.stream.Collectors;
 
@@ -19,28 +21,48 @@ public class AppointmentController {
 
     @GetMapping("/appointments")
     public ResponseEntity<?> getAppointments() {
-        return new ResponseEntity<>(appointmentService.getAll().stream().map(AppointmentDTO::new).collect(Collectors.toList()), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(appointmentService.getAll().stream().map(AppointmentDTO::new).collect(Collectors.toList()), HttpStatus.OK);
+        } catch (ResponseStatusException rse) {
+            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+        }
     }
 
-    @GetMapping("/appointments/{appId}")
-    public ResponseEntity<?> getAppointmentsById(@PathVariable(value = "appId") long appId) {
-        return new ResponseEntity<>(new AppointmentDTO(appointmentService.getById(appId)), HttpStatus.OK);
+    @GetMapping("/appointments/{id}")
+    public ResponseEntity<?> getAppointmentsById(@PathVariable(value = "id") Long id) {
+        try {
+            return new ResponseEntity<>(new AppointmentDTO(appointmentService.getById(id)), HttpStatus.OK);
+        } catch (ResponseStatusException rse) {
+            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+        }
     }
 
     @PostMapping("/customers/{customerId}/appointment")
-    public ResponseEntity<?> createAppointment(@PathVariable(value = "customerId") Long cus_Id, @RequestBody Appointment appointment) {
-        return new ResponseEntity<>(new AppointmentDTO(appointmentService.create(cus_Id, appointment)), HttpStatus.CREATED);
+    public ResponseEntity<?> createAppointment(@PathVariable(value = "customerId") String cus_Id, @RequestBody Appointment appointment) {
+        try {
+            return new ResponseEntity<>(new AppointmentDTO(appointmentService.create(Long.valueOf(cus_Id), appointment)), HttpStatus.CREATED);
+        } catch (ResponseStatusException rse) {
+            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+        }
     }
 
-    @PutMapping("/appointments/{appId}")
-    public ResponseEntity<?> updateAppointment(@PathVariable(value = "appId") Long appId, @RequestBody Appointment appointment) {
-        return new ResponseEntity<>(new AppointmentDTO(appointmentService.update(appId, appointment)), HttpStatus.ACCEPTED);
+    @PutMapping("/appointments/{id}")
+    public ResponseEntity<?> updateAppointment(@PathVariable(value = "id") Long id, @RequestBody Appointment appointment) {
+        try {
+            return new ResponseEntity<>(new AppointmentDTO(appointmentService.update(id, appointment)), HttpStatus.ACCEPTED);
+        } catch (ResponseStatusException rse) {
+            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+        }
     }
 
-    @DeleteMapping("/appointments/{appId}")
-    public ResponseEntity<?> deleteAppointment(@PathVariable(value = "appId") Long appId) {
-        appointmentService.delete(appId);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    @DeleteMapping("/appointments/{id}")
+    public ResponseEntity<?> deleteAppointment(@PathVariable(value = "id") Long id) {
+        try {
+            appointmentService.delete(id);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (ResponseStatusException rse) {
+            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+        }
     }
 
 }

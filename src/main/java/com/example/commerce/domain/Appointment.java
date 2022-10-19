@@ -26,6 +26,7 @@ public class Appointment {
 
     @ManyToOne
     private Customer customer;
+
 }
 
 

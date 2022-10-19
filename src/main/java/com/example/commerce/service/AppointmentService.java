@@ -1,15 +1,14 @@
 package com.example.commerce.service;
 
 import com.example.commerce.domain.Appointment;
-import com.example.commerce.domain.Customer;
 import com.example.commerce.repository.AppointmentRepository;
-import com.example.commerce.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,10 +17,13 @@ import java.util.Optional;
 public class AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
-    private final CustomerRepository customerRepository;
+    private final CustomerService customerService;
+    private final LocationService locationService;
 
     public List<Appointment> getAll() {
-        return appointmentRepository.findAll();
+        List<Appointment> appointments = appointmentRepository.findAll();
+        if (appointments.size() > 0) return appointments;
+        else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no appointments");
     }
 
     public Appointment getById(Long appId) {
@@ -36,27 +38,22 @@ public class AppointmentService {
 
     @Transactional
     public Appointment create(Long cus_id, Appointment appointment) {
-        Customer customer;
-
-        System.out.println("location " + appointment.getLocation());
-        System.out.println("time " + appointment.getTime());
-        System.out.println("customer id " + cus_id);
-        customer = customerRepository.findById(cus_id).orElseThrow(() -> new IllegalArgumentException("Check customer Id"));
-
-        System.out.println("setCustomer ");
-        appointment.setCustomer(customer);
-        System.out.println("Method call ");
-
+        appointment.setCustomer(customerService.getById(cus_id));
+        appointment.setLocation(locationService.getById(appointment.getLocation().getId()));
         return appointmentRepository.save(appointment);
     }
 
-    public Appointment update(long appId, Appointment appointment) {
+    public Appointment update(Long appId, Appointment appointment) {
         appointment.setId(appId);
         return appointmentRepository.save(appointment);
     }
 
-    public void delete(long appId) {
-        appointmentRepository.deleteById(appId);
+    public void delete(Long appId) {
+        try {
+            appointmentRepository.deleteById(appId);
+        } catch (InvalidDataAccessResourceUsageException ex) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Appointment with id " + appId + " doesn't exist, and could not be deleted");
+        }
     }
 
 }
