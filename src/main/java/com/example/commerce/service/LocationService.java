@@ -23,13 +23,13 @@ public class LocationService {
         return locationRepository.findAll();
     }
 
-    public Location getById(Long locId) {
-        if (locId != null && locId > 0) {
-            Optional<Location> location = locationRepository.findById(locId);
+    public Location getById(Long id) {
+        if (id != null && id > 0) {
+            Optional<Location> location = locationRepository.findById(id);
             if (location.isPresent()) return location.get();
-            else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No location found with id " + locId);
+            else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No location found with id " + id);
         } else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid id " + id);
         }
     }
 
@@ -56,16 +56,16 @@ public class LocationService {
         return locationRepository.save(location);
     }
 
-    public Location update(Long locId, Location location) {
-        location.setId(locId);
+    public Location update(Long id, Location location) {
+        location.setId(id);
         return locationRepository.save(location);
     }
 
-    public void delete(Long locId) {
+    public void delete(Long id) {
         try {
-            locationRepository.deleteById(locId);
+            locationRepository.deleteById(id);
         } catch (InvalidDataAccessResourceUsageException | EmptyResultDataAccessException ex) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Appointment with id " + locId + " doesn't exist, and could not be deleted");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Appointment with id " + id + " doesn't exist, and could not be deleted");
         }
     }
 
