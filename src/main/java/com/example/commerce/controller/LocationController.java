@@ -23,16 +23,16 @@ public class LocationController {
         try {
             return new ResponseEntity<>(locationService.getAll().stream().map(LocationDTO::new).collect(Collectors.toList()), HttpStatus.OK);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
-    @GetMapping("/location/{locId}")
-    public ResponseEntity<?> getLocationsById(@PathVariable(value = "locId") Long locId) {
+    @GetMapping("/location/{id}")
+    public ResponseEntity<?> getLocationsById(@PathVariable(value = "id") Long id) {
         try {
-            return new ResponseEntity<>(new LocationDTO(locationService.getById(locId)), HttpStatus.OK);
+            return new ResponseEntity<>(new LocationDTO(locationService.getById(id)), HttpStatus.OK);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
@@ -41,27 +41,27 @@ public class LocationController {
         try {
             return new ResponseEntity<>(new LocationDTO(locationService.create(location)), HttpStatus.CREATED);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
-    @PutMapping("/location/{locId}")
-    public ResponseEntity<?> updateLocation(@PathVariable(value = "locId") Long locId, @RequestBody Location location) {
+    @PutMapping("/location/{id}")
+    public ResponseEntity<?> updateLocation(@PathVariable(value = "id") Long id, @RequestBody Location location) {
         try {
-            return new ResponseEntity<>(new LocationDTO(locationService.update(locId, location)), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(new LocationDTO(locationService.update(id, location)), HttpStatus.ACCEPTED);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
-    @DeleteMapping("/location/{locId}")
-    public ResponseEntity<?> deleteLocation(@PathVariable(value = "locId") Long locId) {
+    @DeleteMapping("/location/{id}")
+    public ResponseEntity<?> deleteLocation(@PathVariable(value = "id") Long id) {
         try {
-            locationService.delete(locId);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+            locationService.delete(id);
+            return new ResponseEntity<>("Deleted location with id " + id, HttpStatus.ACCEPTED);
         } catch (
                 ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 }

@@ -23,7 +23,7 @@ public class CustomerController {
         try {
             return new ResponseEntity<>(customerService.getAll().stream().map(CustomerDTO::new).collect(Collectors.toList()), HttpStatus.OK);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
@@ -32,7 +32,7 @@ public class CustomerController {
         try {
             return new ResponseEntity<>(new CustomerDTO(customerService.getById(id)), HttpStatus.OK);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
@@ -41,7 +41,7 @@ public class CustomerController {
         try {
             return new ResponseEntity<>(new CustomerDTO(customerService.create(customer)), HttpStatus.CREATED);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
@@ -50,7 +50,7 @@ public class CustomerController {
         try {
             return new ResponseEntity<>(new CustomerDTO(customerService.update(id, customer)), HttpStatus.ACCEPTED);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
@@ -58,9 +58,9 @@ public class CustomerController {
     public ResponseEntity<?> deleteCustomer(@PathVariable(value = "id") Long id) {
         try {
             customerService.delete(id);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+            return new ResponseEntity<>("Deleted customer with id " + id, HttpStatus.ACCEPTED);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 }

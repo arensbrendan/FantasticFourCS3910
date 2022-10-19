@@ -23,7 +23,7 @@ public class AppointmentController {
         try {
             return new ResponseEntity<>(appointmentService.getAll().stream().map(AppointmentDTO::new).collect(Collectors.toList()), HttpStatus.OK);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
@@ -32,7 +32,7 @@ public class AppointmentController {
         try {
             return new ResponseEntity<>(new AppointmentDTO(appointmentService.getById(id)), HttpStatus.OK);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
@@ -41,7 +41,7 @@ public class AppointmentController {
         try {
             return new ResponseEntity<>(new AppointmentDTO(appointmentService.create(Long.valueOf(cus_Id), appointment)), HttpStatus.CREATED);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
@@ -50,7 +50,7 @@ public class AppointmentController {
         try {
             return new ResponseEntity<>(new AppointmentDTO(appointmentService.update(id, appointment)), HttpStatus.ACCEPTED);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
@@ -58,9 +58,9 @@ public class AppointmentController {
     public ResponseEntity<?> deleteAppointment(@PathVariable(value = "id") Long id) {
         try {
             appointmentService.delete(id);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+            return new ResponseEntity<>("Deleted appointment with id " + id, HttpStatus.ACCEPTED);
         } catch (ResponseStatusException rse) {
-            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+            return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
 
