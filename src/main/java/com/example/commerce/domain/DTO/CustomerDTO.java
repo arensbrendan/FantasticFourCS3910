@@ -21,6 +21,7 @@ public class CustomerDTO {
         this.firstName = customer.getFirstName();
         this.lastName = customer.getLastName();
         this.email = customer.getEmail();
+        this.phone = customer.getPhone();
         this.appointments = customer.getAppointments().stream().map(AppointmentDTO::new).collect(Collectors.toList());
     }
 
