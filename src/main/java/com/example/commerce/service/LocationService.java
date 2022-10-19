@@ -1,6 +1,7 @@
 package com.example.commerce.service;
 
 import com.example.commerce.domain.Location;
+import com.example.commerce.domain.Services;
 import com.example.commerce.repository.LocationRepository;
 import com.example.commerce.repository.ServicesRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,12 @@ public class LocationService {
 
     @Transactional
     public Location create(Location location) {
-        return locationRepository.save(location);
+        Location returnVal = locationRepository.save(location);
+        for (Services service : location.getServices()) {
+            if (service.getLocationId() == null) service.setLocationId(returnVal.getId());
+            servicesRepository.save(service);
+        }
+        return returnVal;
     }
 
     public Location update(Long id, Location location) {
