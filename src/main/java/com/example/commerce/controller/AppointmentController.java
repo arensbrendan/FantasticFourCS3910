@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RequiredArgsConstructor
 @RestController
@@ -33,8 +34,12 @@ public class AppointmentController {
     }
 
     @PostMapping("/customers/{customerId}/appointment")
-    public ResponseEntity<?> createAppointment(@PathVariable(value = "customerId") Long cus_Id, @RequestBody Appointment appointment) {
-        return new ResponseEntity<>(appointmentService.create(cus_Id, appointment), HttpStatus.CREATED);
+    public ResponseEntity<?> createAppointment(@PathVariable(value = "customerId") String cus_Id, @RequestBody Appointment appointment) {
+        try {
+            return new ResponseEntity<>(appointmentService.create(Long.valueOf(cus_Id), appointment), HttpStatus.CREATED);
+        } catch (ResponseStatusException rse) {
+            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+        }
     }
 
     @PutMapping("/appointments/{id}")
@@ -46,8 +51,8 @@ public class AppointmentController {
         }
     }
 
-    @DeleteMapping("/appointments/{appId}")
-    public ResponseEntity<?> deleteAppointment(@PathVariable(value = "appId") Long appId) {
+    @DeleteMapping("/appointments/{id}")
+    public ResponseEntity<?> deleteAppointment(@PathVariable(value = "id") Long id) {
         try {
             appointmentService.delete(id);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
