@@ -28,15 +28,15 @@ public class Location {
     private LocalDateTime close;
 
     @OneToMany(mappedBy = "location")
-    private List<Service> purpose = new ArrayList<>();
+    private List<Service> services = new ArrayList<>();
 
     private Boolean mon;
 
-    private Boolean tues;
+    private Boolean tue;
 
     private Boolean wed;
 
-    private Boolean thurs;
+    private Boolean thu;
 
     private Boolean fri;
 

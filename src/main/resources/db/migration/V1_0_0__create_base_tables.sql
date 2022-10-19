@@ -14,9 +14,9 @@ CREATE TABLE location
     open    datetime,
     close   datetime,
     mon     boolean,
-    tues    boolean,
+    tue     boolean,
     wed     boolean,
-    thurs   boolean,
+    thu     boolean,
     fri     boolean,
     sat     boolean,
     sun     boolean

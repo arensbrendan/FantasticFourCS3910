@@ -44,9 +44,9 @@ public class LocationService {
         System.out.println("open " + location.getOpen());
         System.out.println("close " + location.getClose());
         System.out.println("mon " + location.getMon());
-        System.out.println("tues " + location.getTues());
+        System.out.println("tues " + location.getTue());
         System.out.println("wed " + location.getWed());
-        System.out.println("thurs " + location.getThurs());
+        System.out.println("thurs " + location.getThu());
         System.out.println("fri " + location.getFri());
         System.out.println("sat " + location.getSat());
         System.out.println("sun " + location.getSun());
