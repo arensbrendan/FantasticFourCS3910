@@ -3,6 +3,7 @@ package com.example.commerce.service;
 import com.example.commerce.domain.Customer;
 import com.example.commerce.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
