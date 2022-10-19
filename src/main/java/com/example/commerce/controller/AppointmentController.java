@@ -23,10 +23,10 @@ public class AppointmentController {
         }
     }
 
-    @GetMapping("/appointments/{appId}")
-    public ResponseEntity<?> getAppointmentsById(@PathVariable(value = "appId") long appId) {
+    @GetMapping("/appointments/{id}")
+    public ResponseEntity<?> getAppointmentsById(@PathVariable(value = "id") Long id) {
         try {
-            return new ResponseEntity<>(appointmentService.getById(appId), HttpStatus.OK);
+            return new ResponseEntity<>(appointmentService.getById(id), HttpStatus.OK);
         } catch (ResponseStatusException rse) {
             return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
         }
@@ -37,10 +37,10 @@ public class AppointmentController {
         return new ResponseEntity<>(appointmentService.create(cus_Id, appointment), HttpStatus.CREATED);
     }
 
-    @PutMapping("/appointments/{appId}")
-    public ResponseEntity<?> updateAppointment(@PathVariable(value = "appId") Long appId, @RequestBody Appointment appointment) {
+    @PutMapping("/appointments/{id}")
+    public ResponseEntity<?> updateAppointment(@PathVariable(value = "id") Long id, @RequestBody Appointment appointment) {
         try {
-            return new ResponseEntity<>(appointmentService.update(appId, appointment), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(appointmentService.update(id, appointment), HttpStatus.ACCEPTED);
         } catch (ResponseStatusException rse) {
             return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
         }
@@ -49,7 +49,7 @@ public class AppointmentController {
     @DeleteMapping("/appointments/{appId}")
     public ResponseEntity<?> deleteAppointment(@PathVariable(value = "appId") Long appId) {
         try {
-            appointmentService.delete(appId);
+            appointmentService.delete(id);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (ResponseStatusException rse) {
             return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
