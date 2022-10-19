@@ -16,7 +16,6 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "customer_id")
     private Long id;
 
     private String name;
