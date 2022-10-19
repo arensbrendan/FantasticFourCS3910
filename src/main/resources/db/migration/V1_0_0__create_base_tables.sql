@@ -37,6 +37,6 @@ create table services
 (
     id          int primary key auto_increment not null,
     location_id int                            not null,
-    purpose     varchar(16),
+    service     varchar(16),
     FOREIGN KEY (location_id) references location (id)
 )

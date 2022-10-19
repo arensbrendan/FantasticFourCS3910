@@ -21,6 +21,6 @@ public class Service {
     @ManyToOne
     private Location location;
 
-    private String purpose;
+    private String service;
 
 }
