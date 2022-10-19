@@ -36,8 +36,8 @@ public class CustomerController {
         }
     }
 
-    @PostMapping("/customers/{customerId}/customer")
-    public ResponseEntity<?> createCustomer(@PathVariable(value = "customerId") String cus_Id, @RequestBody Customer customer) {
+    @PostMapping("/customers")
+    public ResponseEntity<?> createCustomer(@RequestBody Customer customer) {
         try {
             return new ResponseEntity<>(new CustomerDTO(customerService.create(customer)), HttpStatus.CREATED);
         } catch (ResponseStatusException rse) {
