@@ -16,7 +16,6 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "customer_id")
     private Long id;
 
     private String fname;
@@ -27,10 +26,7 @@ public class Customer {
 
     private String phone;
 
-    //Embedded , Embeddable
-
-
-    @OneToMany( mappedBy = "id" )
+    @OneToMany(mappedBy = "customer")
     private List<Appointment> appointments = new ArrayList<>();
 
 }

@@ -20,7 +20,7 @@ public class LocationController {
     }
 
     @GetMapping("/location/{locId}")
-    public ResponseEntity<?> getLocationsById(@PathVariable(value = "locId") long locId) {
+    public ResponseEntity<?> getLocationsById(@PathVariable(value = "locId") Long locId) {
         return new ResponseEntity<>(locationService.getById(locId), HttpStatus.OK);
     }
 

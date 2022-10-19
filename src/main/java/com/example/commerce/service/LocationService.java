@@ -54,12 +54,12 @@ public class LocationService {
         return locationRepository.save(location);
     }
 
-    public Location update(long locId, Location location) {
+    public Location update(Long locId, Location location) {
         location.setId(locId);
         return locationRepository.save(location);
     }
 
-    public void delete(long locId) {
+    public void delete(Long locId) {
         locationRepository.deleteById(locId);
     }
 

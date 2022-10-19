@@ -1,6 +1,5 @@
 package com.example.commerce.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,19 +19,14 @@ public class Appointment {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "location_id")
     private Location location;
 
     private LocalDateTime time;
 
     private String purpose;
 
-
     @ManyToOne
-    @JoinColumn(name = "customer_id")
-    @JsonIgnore
     private Customer customer;
-
 
 }
 

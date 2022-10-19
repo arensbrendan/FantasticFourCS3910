@@ -1,21 +1,22 @@
 package com.example.commerce.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NonNull
     private Long id;
 
     private String name;
@@ -26,8 +27,8 @@ public class Location {
 
     private LocalDateTime close;
 
-    @OneToMany
-    private Set<Service> purpose;
+    @OneToMany(mappedBy = "location")
+    private List<Service> purpose = new ArrayList<>();
 
     private Boolean mon;
 
@@ -42,10 +43,8 @@ public class Location {
     private Boolean sat;
 
     private Boolean sun;
-    //Embedded , Embeddable
 
-
-    //@OneToMany( mappedBy = "customer" )
-    //private List<Appointment> appointments = new ArrayList<>();
+    @OneToMany(mappedBy = "location")
+    private List<Appointment> appointments = new ArrayList<>();
 
 }
