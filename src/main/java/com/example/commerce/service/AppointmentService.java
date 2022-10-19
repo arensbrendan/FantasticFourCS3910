@@ -27,13 +27,13 @@ public class AppointmentService {
         else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no appointments");
     }
 
-    public Appointment getById(Long appId) {
-        if (appId != null && appId > 0) {
-            Optional<Appointment> appointment = appointmentRepository.findById(appId);
+    public Appointment getById(Long id) {
+        if (id != null && id > 0) {
+            Optional<Appointment> appointment = appointmentRepository.findById(id);
             if (appointment.isPresent()) return appointment.get();
-            else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No appointment found with id " + appId);
+            else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No appointment found with id " + id);
         } else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid id " + id);
         }
     }
 
@@ -44,16 +44,16 @@ public class AppointmentService {
         return appointmentRepository.save(appointment);
     }
 
-    public Appointment update(Long appId, Appointment appointment) {
-        appointment.setId(appId);
+    public Appointment update(Long id, Appointment appointment) {
+        appointment.setId(id);
         return appointmentRepository.save(appointment);
     }
 
-    public void delete(Long appId) {
+    public void delete(Long id) {
         try {
-            appointmentRepository.deleteById(appId);
+            appointmentRepository.deleteById(id);
         } catch (InvalidDataAccessResourceUsageException | EmptyResultDataAccessException ex) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Appointment with id " + appId + " doesn't exist and could not be deleted");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Appointment with id " + id + " doesn't exist and could not be deleted");
         }
     }
 
