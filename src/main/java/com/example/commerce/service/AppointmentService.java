@@ -21,7 +21,9 @@ public class AppointmentService {
     private final CustomerRepository customerRepository;
 
     public List<Appointment> getAll() {
-        return appointmentRepository.findAll();
+        List<Appointment> appointments = appointmentRepository.findAll();
+        if (appointments.size() > 0) return appointments;
+        else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no appointments");
     }
 
     public Appointment getById(Long appId) {
@@ -56,7 +58,11 @@ public class AppointmentService {
     }
 
     public void delete(long appId) {
-        appointmentRepository.deleteById(appId);
+        try {
+            appointmentRepository.deleteById(appId);
+        } catch (InvalidDataAccessResourceUsageException ex) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Appointment with id " + appId + " doesn't exist, and could not be deleted");
+        }
     }
 
 }

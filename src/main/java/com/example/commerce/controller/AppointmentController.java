@@ -16,12 +16,20 @@ public class AppointmentController {
 
     @GetMapping("/appointments")
     public ResponseEntity<?> getAppointments() {
-        return new ResponseEntity<>(appointmentService.getAll(), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(appointmentService.getAll(), HttpStatus.OK);
+        } catch (ResponseStatusException rse) {
+            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+        }
     }
 
     @GetMapping("/appointments/{appId}")
     public ResponseEntity<?> getAppointmentsById(@PathVariable(value = "appId") long appId) {
-        return new ResponseEntity<>(appointmentService.getById(appId), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(appointmentService.getById(appId), HttpStatus.OK);
+        } catch (ResponseStatusException rse) {
+            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+        }
     }
 
     @PostMapping("/customers/{customerId}/appointment")
@@ -31,13 +39,21 @@ public class AppointmentController {
 
     @PutMapping("/appointments/{appId}")
     public ResponseEntity<?> updateAppointment(@PathVariable(value = "appId") Long appId, @RequestBody Appointment appointment) {
-        return new ResponseEntity<>(appointmentService.update(appId, appointment), HttpStatus.ACCEPTED);
+        try {
+            return new ResponseEntity<>(appointmentService.update(appId, appointment), HttpStatus.ACCEPTED);
+        } catch (ResponseStatusException rse) {
+            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+        }
     }
 
     @DeleteMapping("/appointments/{appId}")
     public ResponseEntity<?> deleteAppointment(@PathVariable(value = "appId") Long appId) {
-        appointmentService.delete(appId);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        try {
+            appointmentService.delete(appId);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (ResponseStatusException rse) {
+            return new ResponseEntity<>(rse.getMessage(), rse.getStatus());
+        }
     }
 
 }
