@@ -18,7 +18,7 @@ public class Services {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // use the auto increment of the database
     private Long id;
 
-    private Long location;
+    private Long locationId;
 
     private String service;
 
