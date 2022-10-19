@@ -48,7 +48,7 @@ public class CustomerService {
     public void delete(Long appId) {
         try {
             customerRepository.deleteById(appId);
-        } catch (InvalidDataAccessResourceUsageException ex) {
+        } catch (InvalidDataAccessResourceUsageException | EmptyResultDataAccessException ex) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Customer with id " + appId + " doesn't exist, and could not be deleted");
         }
     }

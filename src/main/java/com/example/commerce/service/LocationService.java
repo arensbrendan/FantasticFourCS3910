@@ -60,7 +60,11 @@ public class LocationService {
     }
 
     public void delete(Long locId) {
-        locationRepository.deleteById(locId);
+        try {
+            locationRepository.deleteById(locId);
+        } catch (InvalidDataAccessResourceUsageException | EmptyResultDataAccessException ex) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Appointment with id " + locId + " doesn't exist, and could not be deleted");
+        }
     }
 
 }

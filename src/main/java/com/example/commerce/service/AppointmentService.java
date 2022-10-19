@@ -3,6 +3,7 @@ package com.example.commerce.service;
 import com.example.commerce.domain.Appointment;
 import com.example.commerce.repository.AppointmentRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -51,8 +52,8 @@ public class AppointmentService {
     public void delete(Long appId) {
         try {
             appointmentRepository.deleteById(appId);
-        } catch (InvalidDataAccessResourceUsageException ex) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Appointment with id " + appId + " doesn't exist, and could not be deleted");
+        } catch (InvalidDataAccessResourceUsageException | EmptyResultDataAccessException ex) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Appointment with id " + appId + " doesn't exist and could not be deleted");
         }
     }
 
