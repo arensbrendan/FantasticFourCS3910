@@ -26,7 +26,7 @@ public class CustomerService {
             if (customer.isPresent()) return customer.get();
             else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No customer found with id " + id);
         } else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid id " + id);
         }
     }
 
@@ -50,7 +50,7 @@ public class CustomerService {
         try {
             customerRepository.deleteById(appId);
         } catch (InvalidDataAccessResourceUsageException | EmptyResultDataAccessException ex) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Customer with id " + appId + " doesn't exist, and could not be deleted");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer with id " + appId + " doesn't exist, and could not be deleted");
         }
     }
 
