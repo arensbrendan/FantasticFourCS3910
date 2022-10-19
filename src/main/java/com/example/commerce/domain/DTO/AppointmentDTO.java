@@ -1,5 +1,6 @@
-package com.example.commerce.domain;
+package com.example.commerce.domain.DTO;
 
+import com.example.commerce.domain.Appointment;
 import lombok.Data;
 
 import java.time.LocalDateTime;
