@@ -1,8 +1,6 @@
 package com.example.commerce.controller;
 
-import com.example.commerce.domain.Book;
 import com.example.commerce.domain.Customer;
-import com.example.commerce.service.BookService;
 import com.example.commerce.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
