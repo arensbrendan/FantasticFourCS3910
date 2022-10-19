@@ -1,15 +1,14 @@
 package com.example.commerce.service;
 
 import com.example.commerce.domain.Appointment;
-import com.example.commerce.domain.Customer;
 import com.example.commerce.repository.AppointmentRepository;
-import com.example.commerce.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +17,8 @@ import java.util.Optional;
 public class AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
-    private final CustomerRepository customerRepository;
+    private final CustomerService customerService;
+    private final LocationService locationService;
 
     public List<Appointment> getAll() {
         List<Appointment> appointments = appointmentRepository.findAll();
@@ -38,17 +38,8 @@ public class AppointmentService {
 
     @Transactional
     public Appointment create(Long cus_id, Appointment appointment) {
-        Customer customer;
-
-        System.out.println("location " + appointment.getLocation());
-        System.out.println("time " + appointment.getTime());
-        System.out.println("customer id " + cus_id);
-        customer = customerRepository.findById(cus_id).orElseThrow(() -> new IllegalArgumentException("Check customer Id"));
-
-        System.out.println("setCustomer ");
-        appointment.setCustomer(customer);
-        System.out.println("Method call ");
-
+        appointment.setCustomer(customerService.getById(cus_id));
+        appointment.setLocation(locationService.getById(appointment.getLocation().getId()));
         return appointmentRepository.save(appointment);
     }
 
