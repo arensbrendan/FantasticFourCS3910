@@ -1,12 +1,12 @@
 package com.example.commerce.domain.DTO;
 
 import com.example.commerce.domain.Location;
+import com.example.commerce.domain.Services;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Data
 public class LocationDTO {
@@ -15,7 +15,7 @@ public class LocationDTO {
     private String address;
     private LocalDateTime open;
     private LocalDateTime close;
-    private List<ServiceDTO> services;
+    private List<Services> services;
     private Boolean mon;
     private Boolean tue;
     private Boolean wed;
@@ -31,7 +31,7 @@ public class LocationDTO {
         this.address = location.getAddress();
         this.open = location.getOpen();
         this.close = location.getClose();
-        this.services = location.getServices().stream().map(ServiceDTO::new).collect(Collectors.toList());
+        this.services = location.getServices();
         this.mon = location.getMon();
         this.tue = location.getTue();
         this.wed = location.getWed();

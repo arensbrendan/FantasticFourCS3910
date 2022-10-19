@@ -12,14 +12,13 @@ import javax.persistence.*;
 @Data
 @Table(name = "services")
 @Entity
-public class Service {
+public class Services {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // use the auto increment of the database
     private Long id;
 
-    @ManyToOne
-    private Location location;
+    private Long location;
 
     private String service;
 

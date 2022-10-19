@@ -27,8 +27,9 @@ public class Location {
 
     private LocalDateTime close;
 
-    @OneToMany(mappedBy = "location")
-    private List<Service> services = new ArrayList<>();
+    @OneToMany()
+    @JoinColumn(name = "location_id", nullable = false, updatable = false, insertable = false)
+    private List<Services> services = new ArrayList<>();
 
     private Boolean mon;
 

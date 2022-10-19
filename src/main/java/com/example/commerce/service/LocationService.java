@@ -1,7 +1,9 @@
 package com.example.commerce.service;
 
 import com.example.commerce.domain.Location;
+import com.example.commerce.domain.Services;
 import com.example.commerce.repository.LocationRepository;
+import com.example.commerce.repository.ServicesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.InvalidDataAccessResourceUsageException;
@@ -18,6 +20,7 @@ import java.util.Optional;
 public class LocationService {
 
     private final LocationRepository locationRepository;
+    private final ServicesRepository servicesRepository;
 
     public List<Location> getAll() {
         return locationRepository.findAll();
@@ -35,25 +38,12 @@ public class LocationService {
 
     @Transactional
     public Location create(Location location) {
-
-
-        System.out.println("location id" + location.getId());
-
-        System.out.println("time " + location.getName());
-        System.out.println("address " + location.getAddress());
-        System.out.println("open " + location.getOpen());
-        System.out.println("close " + location.getClose());
-        System.out.println("mon " + location.getMon());
-        System.out.println("tues " + location.getTue());
-        System.out.println("wed " + location.getWed());
-        System.out.println("thurs " + location.getThu());
-        System.out.println("fri " + location.getFri());
-        System.out.println("sat " + location.getSat());
-        System.out.println("sun " + location.getSun());
-
-        System.out.println("Method call ");
-
-        return locationRepository.save(location);
+        Location returnVal = locationRepository.save(location);
+        for (Services service : location.getServices()) {
+            if (service.getLocation() == null) service.setLocation(returnVal.getId());
+            servicesRepository.save(service);
+        }
+        return returnVal;
     }
 
     public Location update(Long id, Location location) {
