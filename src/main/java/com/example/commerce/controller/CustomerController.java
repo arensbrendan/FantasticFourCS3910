@@ -20,9 +20,8 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping("/customer")
-    public ResponseEntity<?> save(@RequestBody Customer customer){
-
-        System.out.println("title " + customer.getFname() + customer.getLname());
+    public ResponseEntity<?> save(@RequestBody Customer customer) {
+        System.out.println("title " + customer.getFirstName() + customer.getLastName());
         return new ResponseEntity<>(customerService.create(customer), HttpStatus.CREATED);
 
     }

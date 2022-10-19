@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -26,8 +27,8 @@ public class Location {
 
     private LocalDateTime close;
 
-    @OneToMany
-    private Set<Service> purpose;
+    @OneToMany(mappedBy = "location")
+    private List<Service> purpose;
 
     private Boolean mon;
 
@@ -42,10 +43,8 @@ public class Location {
     private Boolean sat;
 
     private Boolean sun;
-    //Embedded , Embeddable
 
-
-    //@OneToMany( mappedBy = "customer" )
-    //private List<Appointment> appointments = new ArrayList<>();
+    @OneToMany(mappedBy = "location")
+    private List<Appointment> appointments = new ArrayList<>();
 
 }
