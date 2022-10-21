@@ -1,542 +1,542 @@
 {
-  "info": {
-    "_postman_id": "61a6371c-1668-4e90-8141-9d622d64cbc8",
-    "name": "FantasticFourPostman",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "12365549"
-  },
-  "item": [
-    {
-      "name": "CustomerTests",
-      "item": [
-        {
-          "name": "GetAllCustomers",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "\r",
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/customers",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "customers"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "PostCustomers",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "postman.setEnvironmentVariable(\"custId\", JSON.parse(responseBody).id);\r",
-                  "\r",
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(201);\r",
-                  "});\r",
-                  "pm.test(\"Response Updated Correctly\", function(){\r",
-                  "    const responseJson = pm.response.json();\r",
-                  "    pm.expect(responseJson.firstName).to.eql('John');\r",
-                  "    pm.expect(responseJson.email).to.eql('JohnDoe@gmail.com');\r",
-                  "    pm.expect(responseJson.phone).to.eql('111-111-1111');\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"JohnDoe@gmail.com\",\r\n        \"phone\": \"111-111-1111\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "localhost:8080/customers",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "customers"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "UpdateCustomer",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "\r",
-                  "pm.test(\"Status 202\", function(){\r",
-                  "    pm.response.to.have.status(202);\r",
-                  "});\r",
-                  "pm.test(\"Response Updated Correctly\", function(){\r",
-                  "    const responseJson = pm.response.json();\r",
-                  "    pm.expect(responseJson.firstName).to.eql('Jane');\r",
-                  "    pm.expect(responseJson.email).to.eql('JaneDoe@gmail.com');\r",
-                  "    pm.expect(responseJson.phone).to.eql('111-121-1111');\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"firstName\": \"Jane\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"JaneDoe@gmail.com\",\r\n    \"phone\": \"111-121-1111\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "localhost:8080/customers/{{custId}}",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "customers",
-                "{{custId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GetCustomerById",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "\r",
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/customers/{{custId}}",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "customers",
-                "{{custId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GetCustomerById SHOULD FAIL",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "\r",
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(404);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/customers/999999999",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "customers",
-                "999999999"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "DeleteCustomers",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(202);\r",
-                  "\r",
-                  "    if(pm.response.to.have.status(202)){\r",
-                  "        pm.environment.unset(\"custId\");\r",
-                  "    }\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/customers/{{custId}}",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "customers",
-                "{{custId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "DeleteCustomers SHOULD FAIL",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(404);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/customers/-99",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "customers",
-                "-99"
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "LocationTests",
-      "item": [
-        {
-          "name": "GetAllLocations",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "\r",
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/location",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "location"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "PostLocation",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "postman.setEnvironmentVariable(\"locId\", JSON.parse(responseBody).id);\r",
-                  "\r",
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(201);\r",
-                  "});\r",
-                  "pm.test(\"Response Updated Correctly\", function(){\r",
-                  "    const responseJson = pm.response.json();\r",
-                  "    pm.expect(responseJson.name).to.eql('James St.');\r",
-                  "    pm.expect(responseJson.address).to.eql('1234 James St. KC, MO');\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"name\": \"James St.\",\r\n    \"address\": \"1234 James St. KC, MO\",\r\n    \"open\": \"2018-11-30T10:16:26.939\",\r\n    \"close\": \"2018-11-30T10:17:26.939\",\r\n    \"services\": [\r\n        {\r\n            \"service\": \"work ig\"\r\n        }\r\n    ],\r\n    \"mon\": true,\r\n    \"tue\": true,\r\n    \"wed\": true,\r\n    \"thu\": true,\r\n    \"fri\": true,\r\n    \"sat\": true,\r\n    \"sun\": true\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "localhost:8080/location",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "location"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "UpdateLocation",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "\r",
-                  "pm.test(\"Status 202\", function(){\r",
-                  "    pm.response.to.have.status(202);\r",
-                  "});\r",
-                  "pm.test(\"Response Updated Correctly\", function(){\r",
-                  "    const responseJson = pm.response.json();\r",
-                  "    pm.expect(responseJson.name).to.eql('Peace St.');\r",
-                  "    pm.expect(responseJson.address).to.eql('1234 Peace St. KC, MO');\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Peace St.\",\r\n    \"address\": \"1234 Peace St. KC, MO\",\r\n    \"open\": \"2018-11-30T10:16:46.939\",\r\n    \"close\": \"2018-11-30T10:17:46.939\",\r\n    \"services\": [\r\n        {\r\n            \"service\": \"work ik\"\r\n        }\r\n    ],\r\n    \"mon\": false,\r\n    \"tue\": false,\r\n    \"wed\": false,\r\n    \"thu\": false,\r\n    \"fri\": false,\r\n    \"sat\": false,\r\n    \"sun\": false\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "localhost:8080/location/{{locId}}",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "location",
-                "{{locId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GetCustomerById",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "\r",
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/customers/{{custId}}",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "customers",
-                "{{custId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GetCustomerById SHOULD FAIL",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "\r",
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(404);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/customers/-99",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "customers",
-                "-99"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "DeleteCustomers",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "\r",
-                  "    if(pm.response.to.have.status(200)){\r",
-                  "        pm.environment.unset(\"custId\");\r",
-                  "    }\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/customers/{{custId}}",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "customers",
-                "{{custId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "DeleteCustomers SHOULD FAIL",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status 201\", function(){\r",
-                  "    pm.response.to.have.status(404);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "localhost:8080/customers/-99",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "customers",
-                "-99"
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    }
-  ]
+	"info": {
+		"_postman_id": "ef77f89a-16ce-4ccc-aaf1-91c52fb33cca",
+		"name": "FantasticFourPostman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23146917"
+	},
+	"item": [
+		{
+			"name": "CustomerTests",
+			"item": [
+				{
+					"name": "PostCustomers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"custId\", JSON.parse(responseBody).id);\r",
+									"\r",
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Response Updated Correctly\", function(){\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.firstName).to.eql('John');\r",
+									"    pm.expect(responseJson.email).to.eql('JohnDoe@gmail.com');\r",
+									"    pm.expect(responseJson.phone).to.eql('111-111-1111');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"JohnDoe@gmail.com\",\r\n        \"phone\": \"111-111-1111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/customers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCustomer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status 202\", function(){\r",
+									"    pm.response.to.have.status(202);\r",
+									"});\r",
+									"pm.test(\"Response Updated Correctly\", function(){\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.firstName).to.eql('Jane');\r",
+									"    pm.expect(responseJson.email).to.eql('JaneDoe@gmail.com');\r",
+									"    pm.expect(responseJson.phone).to.eql('111-121-1111');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Jane\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"JaneDoe@gmail.com\",\r\n    \"phone\": \"111-121-1111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/customers/{{custId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"{{custId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllCustomers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/customers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCustomerById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/customers/{{custId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"{{custId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCustomerById SHOULD FAIL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/customers/999999999",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"999999999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCustomers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(202);\r",
+									"\r",
+									"    if(pm.response.to.have.status(202)){\r",
+									"        pm.environment.unset(\"custId\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/customers/{{custId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"{{custId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCustomers SHOULD FAIL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/customers/-99",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"-99"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LocationTests",
+			"item": [
+				{
+					"name": "PostLocation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"locId\", JSON.parse(responseBody).id);\r",
+									"\r",
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Response Updated Correctly\", function(){\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.name).to.eql('James St.');\r",
+									"    pm.expect(responseJson.address).to.eql('1234 James St. KC, MO');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"James St.\",\r\n    \"address\": \"1234 James St. KC, MO\",\r\n    \"open\": \"2018-11-30T10:16:26.939\",\r\n    \"close\": \"2018-11-30T10:17:26.939\",\r\n    \"services\": [\r\n        {\r\n            \"service\": \"work ig\"\r\n        }\r\n    ],\r\n    \"mon\": true,\r\n    \"tue\": true,\r\n    \"wed\": true,\r\n    \"thu\": true,\r\n    \"fri\": true,\r\n    \"sat\": true,\r\n    \"sun\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/location",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateLocation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status 202\", function(){\r",
+									"    pm.response.to.have.status(202);\r",
+									"});\r",
+									"pm.test(\"Response Updated Correctly\", function(){\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.name).to.eql('Peace St.');\r",
+									"    pm.expect(responseJson.address).to.eql('1234 Peace St. KC, MO');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Peace St.\",\r\n    \"address\": \"1234 Peace St. KC, MO\",\r\n    \"open\": \"2018-11-30T10:16:46.939\",\r\n    \"close\": \"2018-11-30T10:17:46.939\",\r\n    \"services\": [\r\n        {\r\n            \"service\": \"work ik\"\r\n        }\r\n    ],\r\n    \"mon\": false,\r\n    \"tue\": false,\r\n    \"wed\": false,\r\n    \"thu\": false,\r\n    \"fri\": false,\r\n    \"sat\": false,\r\n    \"sun\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/location/{{locId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"location",
+								"{{locId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllLocations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/location",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetLocationById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/location/{{locId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"location",
+								"{{locId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetLocationById SHOULD FAIL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/location/99",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"location",
+								"99"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteLocation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(202);\r",
+									"\r",
+									"    if(pm.response.to.have.status(202)){\r",
+									"        pm.environment.unset(\"locId\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/location/{{locId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"location",
+								"{{locId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteLocation SHOULD FAIL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 201\", function(){\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/location/{{locId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"location",
+								"{{locId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
 }
