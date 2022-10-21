@@ -6,6 +6,7 @@ create table customer
     email      varchar(64),
     phone      varchar(16)
 );
+
 CREATE TABLE location
 (
     id      int primary key auto_increment not null,
