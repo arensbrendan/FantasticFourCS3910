@@ -45,7 +45,7 @@ public class Location {
 
     private Boolean sun;
 
-    @OneToMany(mappedBy = "location")
+    @OneToMany(mappedBy = "location", cascade = CascadeType.REMOVE)
     private List<Appointment> appointments = new ArrayList<>();
 
 }

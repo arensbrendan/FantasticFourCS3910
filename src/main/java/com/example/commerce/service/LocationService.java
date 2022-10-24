@@ -56,7 +56,7 @@ public class LocationService {
         try {
             locationRepository.deleteById(id);
         } catch (InvalidDataAccessResourceUsageException | EmptyResultDataAccessException ex) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Appointment with id " + id + " doesn't exist, and could not be deleted");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Appointment with id " + id + " doesn't exist, and could not be deleted");
         }
     }
 

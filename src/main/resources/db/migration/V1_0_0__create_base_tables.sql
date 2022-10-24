@@ -39,5 +39,5 @@ create table services
     id          int primary key auto_increment not null,
     location_id int                            not null,
     service     varchar(16),
-    FOREIGN KEY (location_id) references location (id)
+    FOREIGN KEY (location_id) references location (id) ON DELETE CASCADE
 )
