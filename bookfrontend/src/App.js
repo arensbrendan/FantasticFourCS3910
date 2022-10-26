@@ -50,6 +50,7 @@ function App(){
                         {/*<Route path="/Details" element={<Details />} />*/}
                         {/*<Route path="/Review" element={<Review />} />*/}
                         <Route path="*" element={<Error />} />
+                    {/*ERROR PAGE MUST BE LAST ROUTE*/}
                     </Routes>
 
             {/*Begin Footnote*/}
