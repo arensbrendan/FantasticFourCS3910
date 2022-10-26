@@ -1,5 +1,5 @@
-import commerceLogo from './images/commerceLogo.png';
-import commerceMock from './images/commerceMock.png';
+import commerceLogo from '../images/commerceLogo.png';
+import commerceMock from '../images/commerceMock.png';
 import './Purpose.css';
 import './Location.js';
 
@@ -8,47 +8,42 @@ function Purpose() {
     //progress();
     //THIS IS THE START OF THE UI
     return (
-        //dummy navbar section, this will help flesh out the top portion of every page
+        <>
+            {/*{//dummy navbar section, this will help flesh out the top portion of every page}*/}
         <div>
             <title>Appointment Purpose</title>
-            <nav>
-                <div class = "header">
-
-                    <p class = "logo"><img src = {commerceLogo} width = "325" height = "50"/></p>
-                    <ul>
-                        <li><button>Home</button></li>
-                        <li><button>Borrow</button></li>
-                        <li><button>Invest</button></li>
-                        <li><button class = "active">Appointments</button></li>
-                        <li><button>Careers</button></li>
-                        <li><button>About</button></li>
-
-                    </ul>
-                </div>
-            </nav>
+            {/*stock image*/}
             <purpose>
                 <img src= {commerceMock} class="imgcenter"/>
             </purpose>
             <prog>
+                {/*Start Navbar*/}
+                {/*each li is what you can consider to be a circle, with the label li following*/}
                 <div className="container">
                     <ul className="progress-bar">
+                        {/*DO NOT KNOW HOW TO DEAL WITH GOING TO A FUTURE PAGE PAST THE ONE IN FRONT IF CUSTOMER HAS BEEN TO IT, MAY SCRAP FEATURE*/}
                         <li>
+                            {/*First status circle*/}
                             <div className = "current"><b>1</b></div>
                             <div><b>Purpose</b></div>
                         </li>
                         <li>
+                            {/*Second status circle*/}
                             <div><a href = "./Location" onClick="return false"><b>2</b></a></div>
                             <div><a href = "./Location" onClick="return false"><b>Location</b></a></div>
                         </li>
                         <li>
+                            {/*Third status circle*/}
                             <div><a href = "./Time" ><b>3</b></a></div>
                             <div><a href = "./Time"><b>Time</b></a></div>
                         </li>
                         <li>
+                            {/*Fourth status circle*/}
                             <div><a href = "./Details"><b>4</b></a></div>
                             <div><a href = "./Details"><b>Details</b></a></div>
                         </li>
                         <li>
+                            {/*Fifth status circle*/}
                             <div><a href = "./Review"><b>5</b></a></div>
                             <div><a href = "./Review"><b>Review</b></a></div>
                         </li>
@@ -58,12 +53,15 @@ function Purpose() {
             </prog>
 
             <purpose>
+                {/*Title's for purpose CheckBoxes*/}
                 <p className="h1"><b>What's the purpose of your visit?</b></p>
                 <p className="sub1"><b>Choose as many topics as you need.</b></p>
 
+                {/*Table section to help organize the checkboxes in a nice manner*/}
                 <table>
                     <tr>
                         <td>
+                            {/*row1*/}
                             <label>
                                 <input type="checkbox" id="Checking"></input><br/>
                                 Checking Account
@@ -86,6 +84,7 @@ function Purpose() {
 
                     <tr>
                         <td>
+                            {/*row2*/}
                             <label>
                                 <input type="checkbox" id="sBanking"align=""></input><br/>
                                 Student Banking
@@ -108,6 +107,7 @@ function Purpose() {
 
                     <tr>
                         <td>
+                            {/*row3*/}
                             <label>
                                 <input type="checkbox" id="credit" align=""></input><br/>
                                 Credit Card
@@ -130,6 +130,7 @@ function Purpose() {
 
                     <tr>
                         <td>
+                            {/*row4*/}
                             <label>
                                 <input type="checkbox" id="mortgage" align=""></input><br/>
                                 Mortgage
@@ -147,30 +148,26 @@ function Purpose() {
                                 Other
                             </label>
                         </td>
-
                     </tr>
 
                 </table>
+                {/*end of checkboxes*/}
+
+                {/*start of textarea*/}
                 <p className="sub2">Add a Note</p>
                 <textarea class = "centerArea" rows="4" cols="50" name="comment" placeholder="Enter Text Here..."></textarea>
-
-
-
-
-
+                {/*end of textarea*/}
             </purpose>
 
+            {/*button used to continue to next page*/}
             <continue>
                 <a href= "./Location.js"><button>Continue</button></a>
             </continue>
 
-            <footnote>
-                <p className="white">`</p>
-                <p className="center1">Brendan Arens - Jackson Gordon - Megan Lesmeister - Adam Meloy</p>
-                <p>SE3910 - Commerce Bank Project - Fall 2022</p>
-            </footnote>
+
 
         </div>
+            </>
 
 
 

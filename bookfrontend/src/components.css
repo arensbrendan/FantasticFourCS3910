@@ -1,0 +1,73 @@
+/*this is the start of the HEADER CSS properties*/
+*{
+    font-family: "Century Gothic", serif;
+}
+
+
+nav{
+    width: 100vw;
+    height: 5rem;
+    display: grid;
+    place-items: center;
+    position: fixed;
+    z-index: 2;
+    background-color: #f5f5f5;
+    border: 1px solid #dcd8d8;
+}
+
+
+nav .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+nav .header ul{
+    display: flex;
+    gap: 3rem;
+}
+nav li {
+    list-style-type: none;
+}
+
+nav button{
+    color:black;
+    all:unset;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+nav button:after {
+    content: '';
+    display: block;
+    border-bottom: 2px solid green;
+    transform: scaleX(0);
+    transition: transform 100ms ease-in-out;}
+
+nav button:not(.active):hover:after { transform: scaleX(1); }
+
+nav button.active {
+    content: '';
+    display: block;
+    border-bottom: 2px solid deepskyblue;
+    transform: scaleX(1);
+}
+/*end of HEADER CSS*/
+
+
+
+/*START OF FOOTNOTE CSS*/
+footnote p{
+    clear: both;
+    position: relative;
+    top: 100px;
+    text-align: center;
+}
+footnote p.center1{
+    margin-left: 0px;
+}
+
+.white{
+    color: white;
+}
