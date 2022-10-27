@@ -14,7 +14,7 @@ prog{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 74%;
+    width: 68%;
 }
 
 .progbarfix{
@@ -130,7 +130,7 @@ purpose .imgcenter {
  purpose table{
      padding: 0;
      margin-right: 420px;
-     margin-left: 600px;
+     margin-left: 685px;
      list-style-type: none;
      justify-content: space-between;
      font-weight: bold;
@@ -236,7 +236,7 @@ continue button {
     top: 5px;
     text-align: center;
     float:right;
-    margin-right: 603px;
+    margin-right: 660px;
 }
 continue button:hover{
     cursor: pointer;

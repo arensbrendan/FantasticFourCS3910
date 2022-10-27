@@ -57,7 +57,7 @@ nav button.active {
     top: 50px;
     display: inline-block;
     position: center;
-    margin-left: 440px;
+    margin-left: 500px;
     margin-right: 500px;
     width: 50%;
     height: 500px;
@@ -80,12 +80,26 @@ h1{
     position: relative;
     top: 30px;
 }
+.h2L{
+    text-align: center;
+}
 
 .buttonL{
     position: relative;
     top: 53px;
     text-align: center;
-    margin-left: 1154px;
+    margin-left: 1300px;
+
+}
+
+.pL{
+    text-align: center;
+}
+
+.kpop{
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
 
 }
 

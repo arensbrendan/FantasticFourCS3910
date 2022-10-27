@@ -2,9 +2,9 @@ import '../components/Header';
 import {GoogleMap, useLoadScript, Marker, InfoWindow} from "@react-google-maps/api";
 import './Location.css';
 import {useMemo, useState} from "react";
-import Reg from '../images/mapMarkerReg.png';
+import Reg1 from '../images/mapMarkerReg.png';
 import '../images/mapMarkerSelect.png';
-import '../images/mapMarkerService.png';
+import Serv1 from '../images/mapMarkerService.png';
 
 //const to display center, this is so that the instance doesn't reset every time we reload
 
@@ -16,20 +16,24 @@ function Map(){
     const [selectedLocation, setSelectedLocation] = useState(null);
     //const to display center, this is so that the instance doesn't reset every time we reload
     const center = useMemo(() => ({lat: 39.066567743643226, lng: -94.5886265711066}), []);
+    var Reg = Serv1;
+    var mapOptions = {
+        streetViewControl: false
+    }
     return(
-        <GoogleMap zoom = {9} center = {center} mapContainerClassName={"map-container"}>
+        <GoogleMap streetViewControl={false} zoom = {9} center = {center} mapContainerClassName={"map-container"}>
             <Marker position={{lat: 39.066567743643226, lng: -94.5886265711066}}
-                    onClick={() => {{setSelectedLocation(location);}}}
+                    onClick={() => {setSelectedLocation(location);}}
                     icon={{
-                        url: {Reg},
-                        scaledSize: new window.google.maps.Size(25, 25)
+                        url: Reg,
+                        scaledSize: new window.google.maps.Size(25, 40)
                     }}
                     />
             {selectedLocation && (
                 <InfoWindow
                 position={{lat: 39.066567743643226, lng: -94.5886265711066}}
                 onCloseClick={() => {setSelectedLocation(null)}}
-                ><h2>Downtown Kansas City<br/>Location</h2>
+                ><p className={"pL"}><h2 className={"h2L"}>Downtown Kansas City <br/> Location</h2><span className={"kpop"}> Services</span> <br/> Other</p>
                 </InfoWindow>
 
             )}
