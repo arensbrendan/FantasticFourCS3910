@@ -86,9 +86,11 @@ h1{
 
 .buttonL{
     position: relative;
-    top: 53px;
+    top: 55px;
     text-align: center;
-    margin-left: 1300px;
+    margin-right: 450px;
+    float:right;
+
 
 }
 
@@ -101,6 +103,9 @@ h1{
     font-weight: bold;
     text-decoration: underline;
 
+}
+.imgL{
+    width: 100%;
 }
 
 /*END OF CONTINUE BUTTON CSS*/

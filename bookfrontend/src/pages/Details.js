@@ -1,4 +1,4 @@
-
+import './Details.css';
 
 
 function Details(){
@@ -49,6 +49,27 @@ function Details(){
                 </div>
             </prog>
 
+            <h1>We just need a few more details about your visit!</h1>
+            <p className={"subheading"}>Please provide all information asked in the boxes below</p>
+
+            <div className={"grid"}>
+
+                    <label className={"grid-item1"} htmlFor={"fname"}><b>First Name:</b></label>
+                    <label className={"grid-item1"} htmlFor={"email"}><b>Email:</b></label>
+
+                    <input type={"text"} name={"fname"} className={"grid-item"} required/>
+                    <input type={"email"} name={"email"} placeholder={"example@email.com"} className={"grid-item"} required/>
+
+                    <label className={"grid-item3"} htmlFor={"lname"}><b>Last Name:</b></label>
+                    <label className={"grid-item3"} htmlFor={"phone"}><b>Phone Number:</b></label>
+
+                    <input type={"text"} name={"lname"} className={"grid-item2"} required/>
+                    <input type={"tel"} name={"phone"} placeholder={"(888)-555-3333"} pattern={"[0-9]{3}-[0-9]{3}-[0-9]{4}"} className={"grid-item2"} required/>
+            </div>
+
+            <continue>
+                <a href= "./Review"><button className={"buttonD"}>Continue</button></a>
+            </continue>
         </>
 
     )

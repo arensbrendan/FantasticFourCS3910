@@ -4,7 +4,7 @@
     font-family: "Century Gothic", serif;
 }
 
-a{
+.a{
     padding: 2px;
 }
 
@@ -79,7 +79,6 @@ ul.progress-bar li div:not(:last-child) {
     text-align: center;
     line-height: 50px;
     border-radius: 50%;
-    font-family: "Century Gothic";
     font-size: 35px;
     border: 2px solid black;
     background-color: #c0c0c0;
@@ -154,7 +153,7 @@ purpose .imgcenter {
 
 
 
- purpose input {
+ purpose .input {
      width: 75px;
      height: 75px;
      margin: 10px 50px 0 50px;
@@ -163,16 +162,16 @@ purpose .imgcenter {
      border: 3px solid black;
  }
 
-purpose input:hover{
+purpose .input:hover{
     accent-color: green;
 }
 
-purpose input:not(.checked) hover {
+purpose .input:not(.checked) hover {
     accent-color: #0fc719;
 }
 
 
-label{
+ label{
     cursor: pointer;
     display: inline-block;
     text-align: center;

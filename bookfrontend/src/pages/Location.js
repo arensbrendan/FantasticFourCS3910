@@ -5,6 +5,7 @@ import {useMemo, useState} from "react";
 import Reg1 from '../images/mapMarkerReg.png';
 import '../images/mapMarkerSelect.png';
 import Serv1 from '../images/mapMarkerService.png';
+import mock from '../images/commerceMock.png';
 
 //const to display center, this is so that the instance doesn't reset every time we reload
 
@@ -16,12 +17,12 @@ function Map(){
     const [selectedLocation, setSelectedLocation] = useState(null);
     //const to display center, this is so that the instance doesn't reset every time we reload
     const center = useMemo(() => ({lat: 39.066567743643226, lng: -94.5886265711066}), []);
-    var Reg = Serv1;
+    var Reg = Serv1; //DO NOT DELETE
     var mapOptions = {
         streetViewControl: false
     }
     return(
-        <GoogleMap streetViewControl={false} zoom = {9} center = {center} mapContainerClassName={"map-container"}>
+        <GoogleMap zoom = {9} center = {center} mapContainerClassName={"map-container"}>
             <Marker position={{lat: 39.066567743643226, lng: -94.5886265711066}}
                     onClick={() => {setSelectedLocation(location);}}
                     icon={{
@@ -33,7 +34,13 @@ function Map(){
                 <InfoWindow
                 position={{lat: 39.066567743643226, lng: -94.5886265711066}}
                 onCloseClick={() => {setSelectedLocation(null)}}
-                ><p className={"pL"}><h2 className={"h2L"}>Downtown Kansas City <br/> Location</h2><span className={"kpop"}> Services</span> <br/> Other</p>
+                ><div className={"info"}>
+                    <p className={"pL"}>
+                        <h2 className={"h2L"}>Downtown Kansas City<br/> Location</h2>
+                        <span className={"kpop"}>
+                        Services</span> <br/> Other</p>
+                    <img href={mock} width={"50"} height={"50"} className={"imgL"}/>
+                </div>
                 </InfoWindow>
 
             )}
