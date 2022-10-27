@@ -4,18 +4,41 @@
     font-family: "Century Gothic", serif;
 }
 
+a{
+    padding: 2px;
+}
+
 /*START OF PROGRESS BAR CSS*/
 
 prog{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 66%;
+    width: 74%;
+}
+
+.progbarfix{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 98%;
+}
+
+div .purposepage{
+    padding-right:100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1400px;
+
+
 }
 
 prog a{
     text-decoration: none;
     color: black;
+    display: block;
+    position: relative;
+    bottom: 2px;
 }
 
 prog .container {
@@ -30,6 +53,7 @@ prog .container {
     align-items: center;
     display: inline-block;
     float: none;
+    cursor: auto;
 }
 
 ul.progress-bar {
@@ -106,14 +130,12 @@ purpose .imgcenter {
  purpose table{
      padding: 0;
      margin-right: 420px;
-     margin-left: 690px;
+     margin-left: 600px;
      list-style-type: none;
      justify-content: space-between;
      font-weight: bold;
-     list-style-type: none;
      border-spacing: 100px;
      border-collapse: collapse;
-     justify-content: space-between;
 
  }
 
@@ -192,7 +214,7 @@ purpose .centerArea {
 
 /*start of continue button CSS*/
 
-continue{
+Purpose.continue{
     position: relative;
     top: 3px;
     text-align: right;
@@ -207,11 +229,14 @@ continue button {
     font-size: 20px;
     width: 150px;
     height: 45px;
+
+}
+.buttonP{
     position: relative;
     top: 5px;
     text-align: center;
     float:right;
-    margin-right: 663px;
+    margin-right: 603px;
 }
 continue button:hover{
     cursor: pointer;

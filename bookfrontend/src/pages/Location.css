@@ -51,84 +51,42 @@ nav button.active {
 }
 /*end of HEADER CSS*/
 
-/*START OF PROGRESS BAR CSS*/
+/*START OF GOOGLE MAP CSS*/
 
-prog{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 66%;
-}
-
-prog a{
-    text-decoration: none;
-    color: black;
-}
-
-prog .container {
-    position: relative;
-    top: 20px;
-    max-width: 100vw;
-    width: 1200px;
-    background-color: white;
-    padding:5px;
-    padding-left: 75px;
-    box-sizing:border-box;
-    align-items: center;
+.map-container {
+    top: 50px;
     display: inline-block;
-    float: none;
+    position: center;
+    margin-left: 440px;
+    margin-right: 500px;
+    width: 50%;
+    height: 500px;
+    border-radius: 2px;
+
 }
 
-ul.progress-bar {
-    padding: 0;
-    margin:0;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    /*I used gradient for the line*/
-    background: linear-gradient(deepskyblue, deepskyblue)50% 30px/100% 2px no-repeat;
-}
-
-ul.progress-bar li {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-ul.progress-bar li div:not(:last-child) {
-    padding: 5px;
-    height: 50px;
-    width: 50px;
+.subheading{
+    color: silver;
+    font-weight: bold;
     text-align: center;
-    line-height: 50px;
-    border-radius: 50%;
-    font-family: "Century Gothic";
-    font-size: 35px;
-    border: 2px solid black;
-    background-color: #c0c0c0;
+    font-size: 20px;
+    position: relative;
+    top: 5px;
 }
 
-
-/*Hide the overflow of the line*/
-
-ul.progress-bar li:first-child {
-    background: linear-gradient(to left, transparent 50%, white 0);
+h1{
+    text-align: center;
+    font-size: 40px;
+    position: relative;
+    top: 30px;
 }
 
-ul.progress-bar li:last-child {
-    background: linear-gradient(to right, transparent 50%, white 0);
-}
-
-/*USE .done TO CHANGE THE COLOR OF PROGRESS CIRCLES THAT ARE DONE*/
-ul.progress-bar li div.done{
-
-    background-color: green;
+.buttonL{
+    position: relative;
+    top: 53px;
+    text-align: center;
+    margin-left: 1154px;
 
 }
-/*USE .current TO CHANGE THE COLOR OF PROGRESS CIRCLES THAT ARE THE CURRENT PAGE*/
-ul.progress-bar li div.current{
 
-    background-color: lightgreen;
-
-}
-/*END OF PROGRESS BAR CSS*/
+/*END OF CONTINUE BUTTON CSS*/

@@ -8,6 +8,8 @@ import commerceLogo from "./images/commerceLogo.png";
 import Location from "./pages/Location";
 //import './pages/Purpose.css';
 import './components.css'
+import Review from "./pages/Review";
+import Details from "./pages/Details";
 
 
 
@@ -47,8 +49,8 @@ function App(){
                         <Route path="/" element={<Purpose />} />
                         <Route path="/Location" element={<Location />} />
                         {/*<Route path="/Time" element={<Time />} />*/}
-                        {/*<Route path="/Details" element={<Details />} />*/}
-                        {/*<Route path="/Review" element={<Review />} />*/}
+                        <Route path="/Details" element={<Details />} />
+                        <Route path="/Review" element={<Review />} />
                         <Route path="*" element={<Error />} />
                     {/*ERROR PAGE MUST BE LAST ROUTE*/}
                     </Routes>
