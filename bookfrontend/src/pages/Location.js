@@ -42,7 +42,7 @@ function Map(){
                     <p className={"pL"}>
                         <h2 className={"h2L"}>Downtown Kansas City<br/> Location</h2>
                         <span className={"kpop"}>
-                        Services</span> <br/> Other</p>
+                        Services</span> <br/> Other <br/> Checking</p>
                     {/*This is a picture of the "location" might scrap this feature*/}
                     <img href={mock} width={"50"} height={"50"} className={"imgL"}/>
                 </div>

@@ -1,0 +1,75 @@
+.gridR{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-left: 400px;
+    margin-right: 400px;
+    grid-row-gap: 120px;
+    margin-bottom: -60px;
+    justify-content: space-evenly;
+}
+
+.reviewBox{
+    border: 3px solid green;
+    border-radius: 7px;
+    padding-right: 20px;
+    padding-left: 20px;
+    width:250px;
+    height: 200px;
+
+}
+
+.reviewHeader{
+    font-size: 30px;
+    position: relative;
+    bottom: 10px;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+.reviewPara{
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    bottom: 10px;
+}
+
+.buttonR{
+    position: relative;
+    top: 80px;
+    text-align: center;
+    margin-right: 650px;
+    float:right;
+    width: 250px
+}
+
+.buttonDelete{
+    position: relative;
+    background-color: white;
+    border: 3px solid red;
+    width: 250px;
+    color: red;
+    top: 80px;
+    text-align: center;
+    margin-left: 650px;
+    float:left;
+}
+
+.buttonDelete:hover {
+    background-color: red;
+    color: white;
+}
+
+.reviewThank{
+    position: relative;
+    margin-top: 150px;
+}
+
+.subHeading1{
+    color: silver;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    top: 5px;
+    margin-bottom: 50px;
+}

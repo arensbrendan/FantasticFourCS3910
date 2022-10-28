@@ -7,6 +7,7 @@
     margin-right: 400px;
     grid-row-gap: 120px;
     margin-bottom: -60px;
+    margin-top: -50px;
     justify-content: space-evenly;
 
 }
@@ -49,7 +50,7 @@
     position: relative;
     bottom: 80px;
     text-align: center;
-    margin-right: 360px;
+    margin-right: 370px;
     float:right;
 
 }

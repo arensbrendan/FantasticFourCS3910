@@ -232,7 +232,7 @@ continue button {
 }
 .buttonP{
     position: relative;
-    top: 5px;
+    top: 10px;
     text-align: center;
     float:right;
     margin-right: 660px;
