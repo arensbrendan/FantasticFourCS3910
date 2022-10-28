@@ -1,12 +1,12 @@
 
 .grid{
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: auto auto;
-    padding: 10px;
     margin-left: 400px;
     margin-right: 400px;
-    grid-row-gap: 100px;
-    grid-column-gap: 0px;
+    grid-row-gap: 120px;
+    margin-bottom: -60px;
     justify-content: space-evenly;
 
 }
@@ -24,7 +24,7 @@
     margin-left: 60px;
     font-size: 20px;
     position: relative;
-    top: 100px;
+    top: 120px;
 }
 
 .grid-item2{
@@ -42,12 +42,12 @@
     margin-left: 60px;
     font-size: 20px;
     position: relative;
-    bottom: 50px;
+    bottom: 30px;
 }
 
 .buttonD{
     position: relative;
-    bottom: 150px;
+    bottom: 80px;
     text-align: center;
     margin-right: 360px;
     float:right;

@@ -19,6 +19,7 @@ function App(){
 
             <div>
                 <nav>
+                    {/*Header that will be on the top of every page, will also follow the user if they scroll*/}
                     <div className="header">
                         <p className="logo"><img src={commerceLogo} width="325" height="50"/></p>
                         <ul>
@@ -45,6 +46,7 @@ function App(){
                     </div>
                 </nav>
             </div>
+                    {/*Routes will be the key to getting all webpages to load, based on their /url*/}
                     <Routes>
                         <Route path="/" element={<Purpose />} />
                         <Route path="/Location" element={<Location />} />
@@ -54,7 +56,7 @@ function App(){
                         <Route path="*" element={<Error />} />
                     {/*ERROR PAGE MUST BE LAST ROUTE*/}
                     </Routes>
-
+            {/*footnote will follow every pages contents*/}
             {/*Begin Footnote*/}
             <footnote>
                 <p className="center1">Brendan Arens - Jackson Gordon - Megan Lesmeister - Adam Meloy</p>

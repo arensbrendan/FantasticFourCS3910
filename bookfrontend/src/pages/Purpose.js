@@ -1,10 +1,10 @@
-import commerceLogo from '../images/commerceLogo.png';
+
 import commerceMock from '../images/commerceMock.png';
 import './Purpose.css';
 import './Location.js';
 
 function Purpose() {
-
+    //minor planning for future backend/frontend connection
     var service = ["other"];
     const i = 1;
 

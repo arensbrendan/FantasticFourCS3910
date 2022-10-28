@@ -12,6 +12,7 @@ function Details(){
             <div>Header Hides</div>
 
             <prog>
+                {/*progbarfix is a fix for every prog bar bedsides the one on the purpose page, this is due to a mistake in the CSS in the purpose.css*/}
                 <div className={"progbarfix"}>
                     {/*Start Navbar*/}
                     {/*each li is what you can consider to be a circle, with the label li following*/}
@@ -49,11 +50,13 @@ function Details(){
                 </div>
             </prog>
 
+            {/*heading and subheading for the Details page*/}
             <h1>We just need a few more details about your visit!</h1>
             <p className={"subheading"}>Please provide all information asked in the boxes below</p>
 
+            {/*using a grid to align the contents of Details, this promises even spacing and is just more useful*/}
             <div className={"grid"}>
-
+                    {/*set up as LABEL - INPUT - LABEL - INPUT to line up correctly */}
                     <label className={"grid-item1"} htmlFor={"fname"}><b>First Name:</b></label>
                     <label className={"grid-item1"} htmlFor={"email"}><b>Email:</b></label>
 
@@ -67,6 +70,7 @@ function Details(){
                     <input type={"tel"} name={"phone"} placeholder={"(888)-555-3333"} pattern={"[0-9]{3}-[0-9]{3}-[0-9]{4}"} className={"grid-item2"} required/>
             </div>
 
+            {/*continue button*/}
             <continue>
                 <a href= "./Review"><button className={"buttonD"}>Continue</button></a>
             </continue>
