@@ -10,6 +10,7 @@ import Location from "./pages/Location";
 import './components.css'
 import Review from "./pages/Review";
 import Details from "./pages/Details";
+import Time from "./pages/Time";
 
 
 
@@ -50,7 +51,7 @@ function App(){
                     <Routes>
                         <Route path="/" element={<Purpose />} />
                         <Route path="/Location" element={<Location />} />
-                        {/*<Route path="/Time" element={<Time />} />*/}
+                        {<Route path="/Time" element={<Time />} />}
                         <Route path="/Details" element={<Details />} />
                         <Route path="/Review" element={<Review />} />
                         <Route path="*" element={<Error />} />
