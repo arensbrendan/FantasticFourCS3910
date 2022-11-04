@@ -60,7 +60,7 @@ export default function Review(){
                 <div className={"reviewBox"}>
 
                     <h1 className={"reviewHeader"}>Date and Time</h1> <br/>
-                    <p className={"reviewPara"}>November 4th, 2022 <br/>at <br/>11:05am </p>
+                    <p className={"reviewPara"}>November 7th, 2022 <br/>at <br/>11:05am </p>
 
                 </div>
 

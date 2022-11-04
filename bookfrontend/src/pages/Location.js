@@ -4,47 +4,68 @@ import './Location.css';
 import {useMemo, useState} from "react";
 import '../images/mapMarkerSelect.png';
 import Serv1 from '../images/mapMarkerService.png';
-import mock from '../images/commerceMock.png';
 
-//const to display center, this is so that the instance doesn't reset every time we reload
+//var cont for testing continue button functionality
+var cont = 0;
 
-
+//array of locations that will be loaded onto the map including their name, location, and services
+var locations = [
+    {
+        name: "Downtown Kansas City Location", location: {lat: 39.066567743643226, lng: -94.5886265711066}, services: "Other"
+    },
+    {
+        name: "Warrensburg Location", location: {lat: 38.7628, lng: -93.7360}, services: "Checking"
+    }
+];
 
 //function Map will make the Google map
 function Map(){
-    const location = "yes";
+    //set selectedLocation properties, to know what location has been selected
     const [selectedLocation, setSelectedLocation] = useState(null);
+    const onSelect = item => {
+        setSelectedLocation(item);
+    }
     //const to display center, this is so that the instance doesn't reset every time we reload
     const center = useMemo(() => ({lat: 39.066567743643226, lng: -94.5886265711066}), []);
     var Reg = Serv1; //DO NOT DELETE
     //return google map, this will render the map
     return(
         //set zoom level, center, and the CSS for the map
-        <GoogleMap zoom = {9} center = {center} mapContainerClassName={"map-container"}>
+        <GoogleMap zoom = {8} center = {center} mapContainerClassName={"map-container"}>
             {/*markers on the map, this will be changed to whatever locations fit the services described, this is one marker*/}
-            <Marker position={{lat: 39.066567743643226, lng: -94.5886265711066}}
-                    //when clicked, call to selectedLocation to both update the location to the backend, and open a viewing window
-                    onClick={() => {setSelectedLocation(location);}}
-                    //custom icon for markers
-                    icon={{
-                        url: Reg,
-                        scaledSize: new window.google.maps.Size(25, 40)
-                    }}
+            {/*return the array of locations as markers on the map, with their own click functions*/}
+            {locations.map(item => {
+                return (
+                    <Marker
+                        key={item.name}
+                        position={item.location}
+                        //when clicked, call to selectedLocation to both update the location to the backend, and open a viewing window
+                        onClick={() => {
+                                setSelectedLocation(item);
+                        }}
+                        //custom icon for markers
+                        icon={{
+                            url: Reg,
+                            scaledSize: new window.google.maps.Size(25, 40)
+                        }}
                     />
+                )
+            })
+            }
             {/*clicked the marker starts here*/}
             {selectedLocation && (
                 //open an info window with what the location has to offer
                 <InfoWindow
-                position={{lat: 39.066567743643226, lng: -94.5886265711066}} // an info window in the exact position of where the marker once was
-                onCloseClick={() => {setSelectedLocation(null)}} //when closed, close info window, should also make this delete location as well
+                position={selectedLocation.location} // an info window in the exact position of where the marker once was
+                onCloseClick={() => {
+                        setSelectedLocation(null)
+                }} //when closed, close info window, should also make this delete location as well
                 ><div className={"info"}>
                     {/*present information of the location that has been chosen*/}
                     <p className={"pL"}>
-                        <h2 className={"h2L"}>Downtown Kansas City<br/> Location</h2>
+                        <h2 className={"h2L"}>{selectedLocation.name}</h2>
                         <span className={"kpop"}>
-                        Services</span> <br/> Other <br/> Checking</p>
-                    {/*This is a picture of the "location" might scrap this feature*/}
-                    <img href={mock} width={"50"} height={"50"} className={"imgL"}/>
+                        Services</span> <br/>{selectedLocation.services}</p>
                 </div>
                 </InfoWindow> //end of info window
 
@@ -57,7 +78,6 @@ function Map(){
 export default function Location(){
     //load the Google map using a unique key from Google API
     const {isLoaded} = useLoadScript({ googleMapsApiKey: "AIzaSyDzPkZ2fM5JKAmWLFVH2rR_HbEvYG-V1uk" })
-
     //for whatever reason the Google map loading fails, this will replace the space inside
     if(!isLoaded)
         return(
@@ -66,6 +86,7 @@ export default function Location(){
     //begin return
     return (
         <>
+
             {/*Spaces to get under the header*/}
             <div>Header Hides</div>
             <div>Header Hides</div>
@@ -119,7 +140,7 @@ export default function Location(){
 
             {/*button used to continue to next page*/}
             <continue>
-                <a href= "./Time"><button className={"buttonL"}>Continue</button></a>
+                <a href= "./Time"><button className={"buttonL"} id = {"contButton"}>Continue</button></a>
             </continue>
 
             {/*consistent spacing breaks*/}

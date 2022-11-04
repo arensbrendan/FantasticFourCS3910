@@ -8,13 +8,15 @@
 
 nav{
     width: 100vw;
-    height: 5rem;
+    height: 6rem;
     display: grid;
     place-items: center;
     position: fixed;
     z-index: 2;
     background-color: #f5f5f5;
     border: 1px solid #dcd8d8;
+    font-weight: bold;
+    font-size: 17px;
 }
 
 
