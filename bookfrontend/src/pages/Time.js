@@ -35,12 +35,12 @@ export default function Time(){
                             {/*DO NOT KNOW HOW TO DEAL WITH GOING TO A FUTURE PAGE PAST THE ONE IN FRONT IF CUSTOMER HAS BEEN TO IT, MAY SCRAP FEATURE*/}
                             <li>
                                 {/*First status circle*/}
-                                <div className = "done"><a  href={"./"}><b>1</b></a></div>
+                                <div className = "done"><a  className={"doneA"} href={"./"}><b>1</b></a></div>
                                 <div><a  href={"./"}><b>Purpose</b></a></div>
                             </li>
                             <li>
                                 {/*Second status circle*/}
-                                <div className = "done"><a href = "./Location"><b>2</b></a></div>
+                                <div className = "done"><a className={"doneA"} href = "./Location"><b>2</b></a></div>
                                 <div><a href = "./Location"><b>Location</b></a></div>
                             </li>
                             <li>
