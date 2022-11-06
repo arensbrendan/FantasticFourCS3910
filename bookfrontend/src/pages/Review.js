@@ -20,22 +20,22 @@ export default function Review(){
                             {/*DO NOT KNOW HOW TO DEAL WITH GOING TO A FUTURE PAGE PAST THE ONE IN FRONT IF CUSTOMER HAS BEEN TO IT, MAY SCRAP FEATURE*/}
                             <li>
                                 {/*First status circle*/}
-                                <div className = "done"><a  href={"./"}><b>1</b></a></div>
+                                <div className = "done"><a  className={"doneA"} href={"./"}><b>1</b></a></div>
                                 <div><a  href={"./"}><b>Purpose</b></a></div>
                             </li>
                             <li>
                                 {/*Second status circle*/}
-                                <div className = "done"><a href = "./Location"><b>2</b></a></div>
+                                <div className = "done"><a className={"doneA"} href = "./Location"><b>2</b></a></div>
                                 <div><a href = "./Location"><b>Location</b></a></div>
                             </li>
                             <li>
                                 {/*Third status circle*/}
-                                <div className = "done"><a href = "./Time" ><b>3</b></a></div>
+                                <div className = "done"><a className={"doneA"} href = "./Time" ><b>3</b></a></div>
                                 <div><a href = "./Time"><b>Time</b></a></div>
                             </li>
                             <li>
                                 {/*Fourth status circle*/}
-                                <div className = "done"><a href = "./Details"><b>4</b></a></div>
+                                <div className = "done"><a className={"doneA"} href = "./Details"><b>4</b></a></div>
                                 <div><a href = "./Details"><b>Details</b></a></div>
                             </li>
                             <li>

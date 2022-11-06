@@ -102,7 +102,7 @@ export default function Location(){
                             {/*DO NOT KNOW HOW TO DEAL WITH GOING TO A FUTURE PAGE PAST THE ONE IN FRONT IF CUSTOMER HAS BEEN TO IT, MAY SCRAP FEATURE*/}
                             <li>
                                 {/*First status circle*/}
-                                <div className = "done"><a  href={"./"}><b>1</b></a></div>
+                                <div className = "done"><a  class= {"doneA"} href={"./"}><b>1</b></a></div>
                                 <div><a  href={"./"}><b>Purpose</b></a></div>
                             </li>
                             <li>
