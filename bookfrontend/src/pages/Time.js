@@ -5,31 +5,18 @@ import Calendar from 'react-calendar';
 
 //Function to build the calendar.
 function BuildCalendar(){
-    /* Needs implementation:
-        1. Event indicator for a date with available times (DONE... for now)
-        2. Click on available date to show its time buttons (CURRENTLY WORKING ON) */
     const [value, onChange] = useState(new Date());
 
     return (
         <div>
-            <Calendar
-                onChange={onChange}
-                value={value}
-                calendarType={"US"}
-                minDate={new Date()}
-                maxDate={new Date("12-3-2022")}
-                // Highlights specific dates!
-                tileClassName={({date, view}) => {
-                    if (view === 'month' && date.getDate() === 4) {
-                        return 'react-calendar__event-indicator'
-                    }
-                }}
-            />
+            <Calendar onChange={onChange} value={value} calendarType={"US"} minDate={new Date()}
+                /* Needs implementation: click on Nov 4th to show times (11:05 am)> */ />
         </div>
     );
 }
 
 export default function Time(){
+
     return(
         <>
             {/*Spaces to get under the header*/}
@@ -38,7 +25,6 @@ export default function Time(){
             <div>Header Hides</div>
             <div>Header Hides</div>
 
-            {/*Progress Bar*/}
             <prog>
                 {/*progbarfix is a fix for every prog bar bedsides the one on the purpose page, this is due to a mistake in the CSS in the purpose.css*/}
                 <div className={"progbarfix"}>
@@ -84,10 +70,11 @@ export default function Time(){
             {/*Renders the calendar.*/}
             <BuildCalendar />
 
-            {/*Button used to continue to next page*/}
+            {/*button used to continue to next page*/}
             <continue>
-                <a href= "./Details" className={"buttonT"}><button>Continue</button></a>
+                <a href= "./Details" className={"buttonP"}><button>Continue</button></a>
             </continue>
         </>
     )
 }
+
