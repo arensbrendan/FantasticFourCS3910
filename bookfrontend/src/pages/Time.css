@@ -128,5 +128,47 @@
 .react-calendar--selectRange .react-calendar__tile--hover {
     background-color: lightgray;
 }
+.react-calendar__event-indicator {
+    background: lightblue;
+}
 /*End of Calendar CSS*/
 
+
+/*Start of TimeButtons CSS*/
+
+
+
+/*End of TimeButtons CSS*/
+
+
+/*start of continue button CSS*/
+Time.continue{
+    position: relative;
+    top: 3px;
+    text-align: right;
+}
+
+continue button {
+    background-color: green;
+    border-radius: 8px;
+    border: 0px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    width: 150px;
+    height: 45px;
+
+}
+.buttonT{
+    position: relative;
+    top: 10px;
+    text-align: center;
+    float:right;
+    margin-right: 660px;
+}
+continue button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #0fc719;
+}
+/*END OF CONTINUE BUTTON CSS*/
