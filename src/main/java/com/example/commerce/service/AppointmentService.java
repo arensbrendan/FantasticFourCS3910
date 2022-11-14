@@ -38,9 +38,7 @@ public class AppointmentService {
     }
 
     @Transactional
-    public Appointment create(Long cus_id, Appointment appointment) {
-        appointment.setCustomer(customerService.getById(cus_id));
-        appointment.setLocation(locationService.getById(appointment.getLocation().getId()));
+    public Appointment create(Appointment appointment) {
         return appointmentRepository.save(appointment);
     }
 

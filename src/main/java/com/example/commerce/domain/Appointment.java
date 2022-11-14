@@ -1,3 +1,4 @@
+
 package com.example.commerce.domain;
 
 import lombok.AllArgsConstructor;
@@ -24,9 +25,8 @@ public class Appointment {
 
     private String purpose;
 
-    @ManyToOne
-    private Customer customer;
+    private String name;
+
+    private String email;
 
 }
-
-

@@ -36,14 +36,16 @@ public class AppointmentController {
         }
     }
 
-    @PostMapping("/customers/{customerId}/appointment")
-    public ResponseEntity<?> createAppointment(@PathVariable(value = "customerId") String cus_Id, @RequestBody Appointment appointment) {
+    @PostMapping("/appointment")
+    public ResponseEntity<?> createNewAppointment(@RequestBody Appointment appointment) {
         try {
-            return new ResponseEntity<>(new AppointmentDTO(appointmentService.create(Long.valueOf(cus_Id), appointment)), HttpStatus.CREATED);
+
+            return new ResponseEntity<>(appointmentService.create(appointment), HttpStatus.CREATED);
         } catch (ResponseStatusException rse) {
             return new ResponseEntity<>(rse.getReason(), rse.getStatus());
         }
     }
+
 
     @PutMapping("/appointments/{id}")
     public ResponseEntity<?> updateAppointment(@PathVariable(value = "id") Long id, @RequestBody Appointment appointment) {
@@ -65,4 +67,3 @@ public class AppointmentController {
     }
 
 }
-
