@@ -128,5 +128,34 @@
 .react-calendar--selectRange .react-calendar__tile--hover {
     background-color: lightgray;
 }
-/*End of Calendar CSS*/
+.react-calendar--tile--event-indicator{
+    background: lightblue;
+}
+/* End of Calendar CSS */
 
+
+
+/* Beginning of Time Button CSS */
+.time-button__button {
+    font-size: 1.3em;
+    background: white;
+    border-width: 0.01em;
+    width: 7em;
+    height: 2.5em;
+    position: relative;
+    display: inline-block;
+    margin: 2em 5em 1em;
+}
+.time-button__button:hover {
+    background: #c4f6c4;
+    cursor: pointer;
+}
+.time-button__button:active{
+    background: green;
+    color: white;
+}
+.time-button__button:enabled:focus{
+    background: green;
+    color: white;
+}
+/* END OF TIME BUTTON CSS */
