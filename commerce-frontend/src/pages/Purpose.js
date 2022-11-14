@@ -1,4 +1,3 @@
-
 import commerceMock from '../images/commerceMock.png';
 import './Purpose.css';
 import './Location.js';

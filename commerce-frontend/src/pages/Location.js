@@ -1,5 +1,5 @@
 import '../components/Header';
-import {GoogleMap, useLoadScript, Marker, InfoWindow} from "@react-google-maps/api";
+import {GoogleMap, InfoWindow, Marker, useLoadScript} from "@react-google-maps/api";
 import './Location.css';
 import {useMemo, useState} from "react";
 import '../images/mapMarkerSelect.png';

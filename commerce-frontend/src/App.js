@@ -1,6 +1,4 @@
-import Header from "./components/Header";
-import {Container} from 'react-bootstrap';
-import {Routes, Route, Router} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import Purpose from './pages/Purpose.js';
 import React from "react";
 import Error from './pages/Error.js';
@@ -11,7 +9,6 @@ import './components.css'
 import Review from "./pages/Review";
 import Details from "./pages/Details";
 import Time from "./pages/Time";
-
 
 
 function App(){
