@@ -11,10 +11,10 @@ var cont = 0;
 //array of locations that will be loaded onto the map including their name, location, and services
 var locations = [
     {
-        name: "Downtown Kansas City Location", location: {lat: 39.066567743643226, lng: -94.5886265711066}, services: "Other"
+        name: "Downtown Kansas City Location", location: {lat: 39.066567743643226, lng: -94.5886265711066}, services: "Checking, Savings, Other"
     },
     {
-        name: "Warrensburg Location", location: {lat: 38.7628, lng: -93.7360}, services: "Checking"
+        name: "Warrensburg Location", location: {lat: 38.7628, lng: -93.7360}, services: "Checking, Other"
     }
 ];
 

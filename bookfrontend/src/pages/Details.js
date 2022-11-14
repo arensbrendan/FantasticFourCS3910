@@ -55,7 +55,7 @@ function Details(){
             <p className={"subheading"}>Please provide all information asked in the boxes below</p>
 
             {/*using a grid to align the contents of Details, this promises even spacing and is just more useful*/}
-            <form>
+            <form action={"./Review"}>
                 <div className={"grid"}>
                         {/*set up as LABEL - INPUT - LABEL - INPUT to line up correctly */}
                         <label className={"grid-item1"} htmlFor={"fname"}><b>First Name:</b></label>
