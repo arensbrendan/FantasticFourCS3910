@@ -12,14 +12,18 @@ public class AppointmentDTO {
     private Long location_id;
     private LocalDateTime time;
     private String purpose;
-    private Long customer_id;
+
+    private String name;
+
+    private String email;
 
     public AppointmentDTO(Appointment appointment) {
         this.id = appointment.getId();
         this.location_id = appointment.getLocation().getId();
         this.time = appointment.getTime();
         this.purpose = appointment.getPurpose();
-        customer_id = appointment.getCustomer().getId();
+        this.name = appointment.getName();
+        this.email = appointment.getEmail();
     }
 }
 
