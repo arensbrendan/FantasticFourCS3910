@@ -230,6 +230,22 @@ continue button {
     height: 45px;
 
 }
+.submitButton{
+    background-color: green;
+    border-radius: 8px;
+    border: 0px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    width: 150px;
+    height: 45px;
+}
+.submitButton:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #0fc719;
+}
+
 .buttonP{
     position: relative;
     top: 10px;

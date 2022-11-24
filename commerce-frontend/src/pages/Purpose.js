@@ -1,13 +1,61 @@
 import commerceMock from '../images/commerceMock.png';
 import './Purpose.css';
 import './Location.js';
+import {useState} from "react";
+import app from "../App";
 
-function Purpose() {
+function Purpose(props) {
     //minor planning for future backend/frontend connection - JG
     //var service = ["other"];
     //const i = 1;
 
     //progress();
+
+    const[appointment, setAppointment] = useState({
+        purpose:''
+
+    });
+
+    const changeValue = (e) =>{
+        console.log(e);
+        setAppointment({
+            ...appointment, [e.target.id]:e.target.value
+        });
+        console.log(e.target.id + " Service ");
+    }
+
+    const submitPurpose =(e)=>{
+        console.log(e.target.id + " Service ");
+        e.preventDefault();
+        fetch("http://localhost:8080/appointment", {
+            method:"POST",
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(appointment)
+        })
+            .then(res=>{
+                console.log(1,res,);
+                if(res.status === 201){
+
+                    return res.json();
+                }else{
+                    return null;
+                }
+            })
+            .then(res=>{
+                console.log(res)
+                if(res!==null){
+                    this.props.history.push('/Location');
+                }else{
+                    alert('fails');
+                }
+
+            });
+
+    }
+
+
     //THIS IS THE START OF THE UI
     return (
         <>
@@ -16,7 +64,7 @@ function Purpose() {
             <title>Appointment Purpose</title>
             {/*stock image*/}
             <purpose>
-                <img src= {commerceMock} class="imgcenter" alt={"Commerce Mock Photo"}/>
+                <img src= {commerceMock} class="imgcenter" alt={"Commerce Mock"}/>
             </purpose>
             <prog>
                 <div className={"purposepage"}>
@@ -55,13 +103,14 @@ function Purpose() {
                     </div>
                 </div>
             </prog>
-
+            <form onSubmit= {submitPurpose}>
             <purpose>
                 {/*Title's for purpose CheckBoxes*/}
                 <p className="h1"><b>What's the purpose of your visit?</b></p>
-                <p className="sub1"><b>Choose as many topics as you need.</b></p>
+                <p className="sub1"><b>Please choose one of the options below.</b></p>
 
                 {/*Table section to help organize the checkboxes in a nice manner*/}
+
                 <table>
                     <div>
 
@@ -69,20 +118,20 @@ function Purpose() {
                         <td>
                             {/*row1*/}
                             <label>
-                                <input type="radio" id="Checking" className={"input"} name={"check"} onClick="checkOne(this)"
+                                <input type="radio" id="Checking" className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}
                                 /><br/>
                                 Checking Account
                             </label>
                         </td>
                         <td>
                             <label>
-                                <input type="radio" id="Savings" className={"input"} name={"check"} onClick="checkOne(this)"></input><br/>
+                                <input type="radio" id="Savings" className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}></input><br/>
                                 Savings Account
                             </label>
                         </td>
                         <td>
                             <label>
-                                <input type="radio" id="CD" className={"input"} name={"check"} onClick="checkOne(this)"></input><br/>
+                                <input type="radio" id="CD" className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}></input><br/>
                                 CD/MM Accounts
                             </label>
                         </td>
@@ -93,19 +142,19 @@ function Purpose() {
                         <td>
                             {/*row2*/}
                             <label>
-                                <input type="radio" id="sBanking" className={"input"} name={"check"} onClick="checkOne(this)"></input><br/>
+                                <input type="radio" id="sBanking" className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}></input><br/>
                                 Student Banking
                             </label>
                         </td>
                         <td>
                             <label>
-                                <input type="radio" id="auto" className={"input"} name={"check"} onClick="checkOne(this)"></input><br/>
+                                <input type="radio" id="auto" className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}></input><br/>
                                 Auto Loans
                             </label>
                         </td>
                         <td>
                             <label>
-                                <input type="radio" id="retire" className={"input"} name={"check"} onClick="checkOne(this)"></input><br/>
+                                <input type="radio" id="retire" className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}></input><br/>
                                 Savings for Retirement
                             </label>
                         </td>
@@ -116,19 +165,19 @@ function Purpose() {
                         <td>
                             {/*row3*/}
                             <label>
-                                <input type="radio" id="credit" className={"input"} name={"check"} onClick="checkOne(this)"></input><br/>
+                                <input type="radio" id="credit" className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}></input><br/>
                                 Credit Card
                             </label>
                         </td>
                         <td>
                             <label>
-                                <input type="radio" id="home" className={"input"} name={"check"} onClick="checkOne(this)"></input><br/>
+                                <input type="radio" id="home" className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}></input><br/>
                                 Home Equity
                             </label>
                         </td>
                         <td>
                             <label>
-                                <input type="radio" id="invest" className={"input"} name={"check"} onClick="checkOne(this)"></input><br/>
+                                <input type="radio" id="invest" className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}></input><br/>
                                 Investment Account
                             </label>
                         </td>
@@ -139,19 +188,19 @@ function Purpose() {
                         <td>
                             {/*row4*/}
                             <label>
-                                <input type="radio" id="mortgage" className={"input"} name={"check"} onClick="checkOne(this)"></input><br/>
+                                <input type="radio" id="mortgage" className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}></input><br/>
                                 Mortgage
                             </label>
                         </td>
                         <td>
                             <label>
-                                <input type="radio" id="sLoans"  className={"input"} name={"check"} onClick="checkOne(this)"></input><br/>
+                                <input type="radio" id="sLoans"  className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}></input><br/>
                                 Student Loans
                             </label>
                         </td>
                         <td>
                             <label>
-                                <input type="radio" id="other"  className={"input"} name={"check"} onClick={"checkOne(this)"}></input><br/>
+                                <input type="radio" id="other"  className={"input"} name={"check"} onClick= {changeValue} value={appointment.purpose}></input><br/>
                                 Other
                             </label>
                         </td>
@@ -169,9 +218,11 @@ function Purpose() {
 
             {/*button used to continue to next page*/}
             <continue>
-                <a href= "./Location" className={"buttonP"}><button>Continue</button></a>
+                <a href= "./Location" className={"buttonP"}><button type = "submit">Continue</button></a>
             </continue>
+            </form>
         </div>
+
             </>
 
 
@@ -180,12 +231,6 @@ function Purpose() {
     ); //END OF UI
 
     //potential integration use function, WIP - JG
-    function checkOne(checkbox) {
-        var checkboxes = document.getElementsByName('check')
-        checkboxes.forEach((item) => {
-            if (item !== checkbox) item.checked = false
-        })
-    }
 }
 
 

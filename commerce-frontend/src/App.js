@@ -48,7 +48,7 @@ function App(){
                     <Routes>
                         <Route path="/" element={<Purpose />} />
                         <Route path="/Location" element={<Location />} />
-                        {<Route path="/Time" element={<Time />} />}
+                        <Route path="/Time" element={<Time />} />
                         <Route path="/Details" element={<Details />} />
                         <Route path="/Review" element={<Review />} />
                         <Route path="*" element={<Error />} />
