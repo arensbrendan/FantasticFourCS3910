@@ -3,8 +3,17 @@ import './Review.css';
 
 export default function Review(props){
 
+    if(props.appointment.time.getDate() === null){
+        props.appointment.time.setDate(404);
+    }
 
+    if(props.appointment.location === null){
+        props.appointment.location = "null";
+    }
 
+    if(props.appointment.purpose === null){
+        props.appointment.purpose = "null";
+    }
 
     return(
 

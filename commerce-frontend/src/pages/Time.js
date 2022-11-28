@@ -3,8 +3,18 @@ import './Time.css';
 import React, {useState} from 'react';
 import Calendar from 'react-calendar';
 
+function TimeButtons() {
+    return (
+        <div className={'time-button__button-position'}>
+            <button className={'time-button__button'} type={"button"}>9:00 am</button>
+            <button className={'time-button__button'} type={"button"}>11:05 am</button>
+            <button className={'time-button__button'} type={"button"}>2:00 pm</button>
+        </div>
+    )
+}
+
 //Function to build the calendar.
-function BuildCalendar(){
+function BuildCalendar() {
     const [time, setTime] = useState(new Date());
 
     const onDateChange = (newDate) => {
@@ -14,8 +24,20 @@ function BuildCalendar(){
 
     return (
         <div>
-            <Calendar onChange={onDateChange} value={time} calendarType={"US"} minDate={new Date()}
-                /* Needs implementation: click on Nov 4th to show times (11:05 am)> */ />
+            <Calendar
+                onChange={setTime}
+                value={time}
+                calendarType={"US"}
+                minDate={new Date()}
+                maxDate={new Date("12-10-2022")}
+
+                // Event Indicator
+                tileClassName={({date, view}) => {
+                    if (view === 'month' && date.getDate() === 2) {
+                        return 'react-calendar--tile--event-indicator'
+                    }
+                }}
+            />
         </div>
     );
 }
@@ -38,10 +60,9 @@ export default function Time({updateTime}){
             <p className={"subheading"}>Choose a date from the calender and an available time from the options below.</p>
 
             {/*Renders the calendar.*/}
-            <div>
-                <Calendar onChange={onDateChange} value={time} calendarType={"US"} minDate={new Date()}
-                    /* Needs implementation: click on Nov 4th to show times (11:05 am)> */ />
-            </div>
+            <BuildCalendar />
+
+            <TimeButtons />
 
             {/*button used to continue to next page*/}
             <continue>
