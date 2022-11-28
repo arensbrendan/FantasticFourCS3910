@@ -119,24 +119,24 @@ purpose .imgcenter {
     width: 60%;
 }
 
- purpose .h1{
-     position: relative;
-     top: 10px;
-     text-align: center;
-     font-size: 40px;
+purpose .h1{
+    position: relative;
+    top: 10px;
+    text-align: center;
+    font-size: 40px;
 }
 
- purpose table{
-     padding: 0;
-     margin-right: 420px;
-     margin-left: 685px;
-     list-style-type: none;
-     justify-content: space-between;
-     font-weight: bold;
-     border-spacing: 100px;
-     border-collapse: collapse;
+purpose table{
+    padding: 0;
+    margin-right: 420px;
+    margin-left: 685px;
+    list-style-type: none;
+    justify-content: space-between;
+    font-weight: bold;
+    border-spacing: 100px;
+    border-collapse: collapse;
 
- }
+}
 
 .container {
     display: block;
@@ -153,14 +153,14 @@ purpose .imgcenter {
 
 
 
- purpose .input {
-     width: 75px;
-     height: 75px;
-     margin: 10px 50px 0 50px;
-     accent-color: darkgreen;
-     cursor: pointer;
-     border: 3px solid black;
- }
+purpose .input {
+    width: 75px;
+    height: 75px;
+    margin: 10px 50px 0 50px;
+    accent-color: darkgreen;
+    cursor: pointer;
+    border: 3px solid black;
+}
 
 purpose .input:hover{
     accent-color: green;
@@ -171,20 +171,20 @@ purpose .input:not(.checked) hover {
 }
 
 
- label{
+label{
     cursor: pointer;
     display: inline-block;
     text-align: center;
 }
 
 
- purpose .sub1{
-     position: relative;
-     top: -30px;
-     text-align: center;
-     font-size: 20px;
-     color: silver;
- }
+purpose .sub1{
+    position: relative;
+    top: -30px;
+    text-align: center;
+    font-size: 20px;
+    color: silver;
+}
 purpose .sub2{
     position: relative;
     top: 15px;
@@ -194,9 +194,9 @@ purpose .sub2{
 }
 
 
- purpose textarea{
+purpose textarea{
     border-radius: 8px;
- }
+}
 
 purpose .centerArea {
     font-size: 20px;
