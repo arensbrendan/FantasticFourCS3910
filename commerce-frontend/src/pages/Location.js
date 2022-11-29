@@ -11,12 +11,32 @@ var cont = 0;
 //array of locations that will be loaded onto the map including their name, location, and services
 var locations = [
     {
-        name: "Downtown Kansas City Location", location: {lat: 39.066567743643226, lng: -94.5886265711066}, services: "Checking, Savings, Other"
+        name: "Downtown Kansas City Location", location: {lat: 39.066567743643226, lng: -94.5886265711066}, services: "Savings, Checking, Other"
     },
     {
         name: "Warrensburg Location", location: {lat: 38.7628, lng: -93.7360}, services: "Checking, Other"
+    },
+    {
+        name: "Overland Park Location", location: {lat:38.9822, lng: -94.6708}, services: "Auto Loans, Credit Card, Other"
+    },
+    {
+        name: "Topeka Location", location: {lat:39.0473, lng: -95.6752}, services: "Student Banking, CD/MM Accounts, Other"
+    },
+    {
+        name: "Harrsionville Location", location: {lat:38.6533, lng: -94.3488}, services: "Student Loans, Savings For Retirement, Other"
+    },
+    {
+        name: "Ottawa Location", location: {lat:38.604465, lng: -95.271301}, services: "Credit Card, Investment, Other"
+    },
+    {
+        name: "Higginsville Location", location: {lat:39.0725, lng: -93.7172}, services: "Checking, Credit Card, Other"
+    },
+    {
+        name: "Lee's Summit Location", location: {lat:38.9108, lng: -94.3822}, services: "Home Equity, Mortgage, Other"
     }
 ];
+
+
 
 //function Map will make the Google map
 function Map({getLocation}){

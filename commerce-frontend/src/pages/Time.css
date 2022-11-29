@@ -146,7 +146,7 @@
     margin: 2em 5em 1em;
 }
 .time-button__button-position {
-    margin-left: 33.5em;
+    margin-left: 26.5em;
 }
 .time-button__button:hover {
     background: #c4f6c4;
@@ -167,6 +167,6 @@
     top: 10px;
     text-align: center;
     float:right;
-    margin-right: 700px;
+    margin-right: 870px;
 }
 

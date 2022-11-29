@@ -3,18 +3,22 @@ import './Review.css';
 
 export default function Review(props){
 
+    const BookSuccess =(e) =>{
+        e.preventDefault();
+        fetch("http://localhost:8080/appointments", {
+            method:"POST",
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(props.appointment)
+        })
+            .then(window.alert("Appointment Booked!"));
+
+    }
+
     if(props.appointment.time.getDate() === null){
-        props.appointment.time.setDate(404);
+        props.appointment.time.setDate(`Wed Nov 30 2022 00:00:00`);
     }
-
-    if(props.appointment.location === null){
-        props.appointment.location = "null";
-    }
-
-    if(props.appointment.purpose === null){
-        props.appointment.purpose = "null";
-    }
-
     return(
 
         <>
@@ -30,7 +34,7 @@ export default function Review(props){
                 <div className={"reviewBox"}>
 
                     <h1 className={"reviewHeader"}>Date and Time</h1> <br/>
-                    <p className={"reviewPara"}>{props.appointment.time.getDate()} <br/>at <br/>11:05am </p>
+                    <p className={"reviewPara"}>{props.appointment.time.getUTCMonth() + 1}/{props.appointment.time.getDate()}/{props.appointment.time.getUTCFullYear()}<br/>at <br/>11:05am </p>
 
                 </div>
 
@@ -54,7 +58,7 @@ export default function Review(props){
 
             </div>
             <continue>
-                <button className={"buttonR"} onClick={"BookSuccess"}>Book Appointment</button>
+                <button className={"buttonR"} onClick={BookSuccess}>Book Appointment</button>
             </continue>
 
             <continue>
@@ -68,20 +72,7 @@ export default function Review(props){
             <br/>
             <br/>
 
-
-
-
-
         </>
 
     )
-}
-
-//an attempt for future frontend/backend
-function BookSuccess(){
-    document.getElementById("bookButton").innerHTML = "Success! Your appointment has been made, we'll see you then!";
-    return(
-        <h1>Success! Your appointment has been made, we'll see you then!</h1>
-    )
-
 }

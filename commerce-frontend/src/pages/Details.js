@@ -45,13 +45,13 @@ function Details({updateDetails}){
                     <label className={"grid-item1"} htmlFor={"email"}><b>Email:</b></label>
 
                     <input onChange = {changeValue} name="fname" value = {user.fname}  type={"text"}   className={"grid-item"} required />
-                    <input onChange = {changeValue} name="email" type={"email"} placeholder={"example@email.com"} className={"grid-item"} required/>
+                    <input onChange = {changeValue} name="email" value = {user.email} type={"email"} placeholder={"example@email.com"} className={"grid-item"} required/>
 
                     <label className={"grid-item3"} htmlFor={"lname"}><b>Last Name:</b></label>
                     <label className={"grid-item3"} htmlFor={"phone"}><b>Phone Number:</b></label>
 
-                    <input onChange = {changeValue} name="lname" type={"text"}  className={"grid-item2"} required/>
-                    <input onChange = {changeValue} name="phone" type={"tel"}  placeholder={"(888)-555-3333"} pattern={"[0-9]{3}-[0-9]{3}-[0-9]{4}"} className={"grid-item2"} required/>
+                    <input onChange = {changeValue} name="lname" type={"text"}  value = {user.lname}className={"grid-item2"} required/>
+                    <input onChange = {changeValue} name="phone" type={"tel"}  value = {user.phone} placeholder={"(888)-555-3333"} pattern={"[0-9]{3}-[0-9]{3}-[0-9]{4}"} className={"grid-item2"} required/>
 
                 </div>
 
